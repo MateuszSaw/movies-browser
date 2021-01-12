@@ -2,11 +2,17 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const activeClassName = "active";
-
-export const NavigationWrapper = styled.div`
+export const StyledNavigation = styled.nav`
   background-color: ${({ theme }) => theme.colors.black};
+  padding: 16px;
+`
+export const NavigationWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    flex-wrap: wrap;
+  }
 `;
 
 export const NavigationContent = styled.div`
@@ -18,12 +24,17 @@ export const Logo = styled.div`
   align-items: center;
 `;
 
-export const Span = styled.span``;
 export const LogoImage = styled.img`
   margin-right: 16px;
   font-size: 24px;
 
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    width: 24px;
+    margin-right: 8px;
+  }
 `;
+
+
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;
@@ -31,12 +42,19 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.white};
   font-size: 24px;
   font-weight: 500;
+  margin-right: 67px;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    font-size: 13px;
+    margin-right: 10px;
+  }
 `;
 
 export const List = styled.ul`
   list-style: none;
   display: flex;
   align-items: center;
+  padding: 0;
 `;
 export const Item = styled.li``;
 
@@ -48,6 +66,11 @@ export const StyledNavLink = styled(NavLink).attrs(() => ({
   padding: 13.5px 24px;
   font-size: 14px;
   text-transform: uppercase;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    font-size: 12px;
+    padding: 13.5px 16px;
+  }
 
 &.${activeClassName} {
  font-weight: bold;
