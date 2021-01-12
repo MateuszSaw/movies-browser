@@ -4,6 +4,7 @@ export const theme = {
     white: "#FFFFFF",
     stormGray: "#74788B",
     mystic: "#E4E6F0",
+    black: "#18181B",
   },
   breakpoints: {
     mobile: 767,

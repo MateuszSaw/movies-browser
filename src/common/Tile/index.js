@@ -4,7 +4,7 @@
  import star from '../images/star.svg'
   import Tags from '../Tags';
 
- const Tile = ({ pogrubienie }) => {
+ const Tile = () => {
    return (
     <StyledTile>
       <Poster src={poster} alt=""/>
