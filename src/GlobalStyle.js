@@ -10,6 +10,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    background: #EEEDEF;
+    background-color: ${({ theme }) => theme.colors.mercury};
+    font-family: 'Poppins', sans-serif;
+    padding: 56px;
   }
 `;
