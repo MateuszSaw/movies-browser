@@ -30,7 +30,7 @@ export const LogoImage = styled.img`
 
   @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
     width: 24px;
-    margin-right: 8px;
+    margin-right: 10px;
   }
 `;
 
@@ -46,7 +46,7 @@ export const StyledLink = styled(Link)`
 
   @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
     font-size: 13px;
-    margin-right: 10px;
+    margin-right: 20px;
   }
 `;
 
@@ -87,10 +87,18 @@ export const InputWrapper = styled.div`
   padding-left: 26px;
   width: 432px;
   height: 48px;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+  margin: 20px 0 0 0;
+  }
 `;
 
 export const Input = styled.input`
  border: none;
+ font-size: 14px;
+ color: ${({ theme }) => theme.colors.darkerGrey};
+ margin-left: 10px;
 
 `;
-export const SearchImage = styled.img``;
+export const SearchImage = styled.img`
+`;
