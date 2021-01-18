@@ -12,6 +12,11 @@ export const StyledTile = styled.div`
 export const Poster = styled.img`
   width: 312px;
   height: 464px;
+
+  ${({ listTile }) => listTile &&css`
+    width: 292px;
+    height: 434px;
+  `};
 `;
 
 export const TileContent = styled.div`
@@ -20,19 +25,32 @@ export const TileContent = styled.div`
 export const Title = styled.header`
   font-weight: 600;
   font-size: 36px;
+
+  ${({ listTile }) => listTile &&css`
+    font-weight: 500;
+    font-size: 22px;
+    padding-top: 16px;
+  `};
 `;
 
 export const Subtitle = styled.p`
   font-size: 22px;
   margin-top: 24px;
   font-weight: normal;
+
+  ${({ listTile }) => listTile &&css`
+    font-weight: normal;
+    font-size: 16px;
+    margin: 0;
+    padding: 8px 0;
+    color: ${({ theme }) => theme.colors.darkerGrey};
+  `};
 `;
 
 export const Details = styled.div`
   font-size: 18px;
   line-height: 1.5;
   margin-top: 24px;
-  
 `;
 
 export const DetailsCategory = styled.span`

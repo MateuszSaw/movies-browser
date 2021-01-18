@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const StyledTags = styled.li`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 24px;
 `;
 
 export const TagsItem = styled.li`
@@ -12,5 +11,8 @@ export const TagsItem = styled.li`
   padding: 8px 16px;
   border-radius: 5px;
   font-size: 14px;
-  margin: 0 16px 16px 0;
+  text-align: center;
+  margin: 0 8px 8px 0;
 `;
+
+

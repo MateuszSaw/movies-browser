@@ -4,9 +4,9 @@ import { StyledTags, TagsItem } from './styled';
 const Tags = () => {
   return(
     <StyledTags>
-      <TagsItem>Action</TagsItem>
-      <TagsItem>Adventure</TagsItem>
-      <TagsItem>Drama</TagsItem>
+      <TagsItem >Action</TagsItem>
+      <TagsItem >Adventure</TagsItem>
+      <TagsItem >Drama</TagsItem>
     </StyledTags>
   )
 };

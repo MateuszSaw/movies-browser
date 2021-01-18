@@ -2,16 +2,21 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const activeClassName = "active";
+
 export const StyledNavigation = styled.nav`
   background-color: ${({ theme }) => theme.colors.black};
-  padding: 16px;
 `
 export const NavigationWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
 
+  @media(max-width: ${({ theme })=> theme.breakpoints.tablet}px){
+    padding: 0 16px;
+  }
+
   @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
     flex-wrap: wrap;
+    padding: 16px;
   }
 `;
 
@@ -94,11 +99,12 @@ export const InputWrapper = styled.div`
 `;
 
 export const Input = styled.input`
- border: none;
- font-size: 14px;
- color: ${({ theme }) => theme.colors.darkerGrey};
- margin-left: 10px;
-
+  border: none;
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.darkerGrey};
+  margin-left: 10px;
+  width: 80%;
 `;
+
 export const SearchImage = styled.img`
 `;

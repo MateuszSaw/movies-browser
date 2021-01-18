@@ -1,9 +1,9 @@
 import React from 'react';
 import Navigation from './common/Navigation';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { toMovieDetails, toMoviesList } from './routes';
-import MoviesList from './features/MoviesList';
-import MovieDetails from './features/MovieDetails';
+import { toMovieDetails, toMoviesPage} from './routes';
+import MoviesPage from './features/movies/MoviesPage';
+import MovieDetails from './features/movies/MovieDetails';
 
 
 function App() {
@@ -11,14 +11,14 @@ function App() {
     <HashRouter>
       <Navigation />
       <Switch>
-        <Route path={toMoviesList()}>
-          <MoviesList />
+        <Route path={toMoviesPage()}>
+          <MoviesPage />
         </Route>
         <Route path={toMovieDetails()}>
           <MovieDetails />
         </Route>
         <Route path="/">
-          <Redirect to={toMoviesList()}/>
+          <Redirect to={toMoviesPage()}/>
         </Route>
       </Switch>
     </HashRouter>
