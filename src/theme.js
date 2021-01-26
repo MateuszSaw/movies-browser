@@ -1,17 +1,16 @@
 export const theme = {
   colors: {
-    mercury: "#E5E5E5",
+    mercury: "#F5F5FA",
     white: "#FFFFFF",
     stormGray: "#74788B",
     mystic: "#E4E6F0",
     black: "#18181B",
     darkerGrey: "#7E839A",
+    scienceBlue: "#0044CC",
   },
   breakpoints: {
     mobile: 767,
     tablet: 991,
-    desktop: 1199,
-
-
+    desktop: 1395,
   }
 };

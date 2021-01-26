@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyledTags, TagsItem } from './styled';
 
-const Tags = () => {
+const Tags = ({ genresId }) => {
   return(
     <StyledTags>
       <TagsItem >Action</TagsItem>

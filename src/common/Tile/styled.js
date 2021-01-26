@@ -1,21 +1,24 @@
 import styled, { css } from "styled-components";
 
-export const StyledTile = styled.div`
+export const Wrapper = styled.div`
   background-color: ${({ theme })=> theme.colors.white};
-  padding: 40px;
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 40px;
+  padding: 40px;
+
+  ${({ movies }) => movies && css`
+    padding: 16px;
+  `}
 `;
 
 export const Poster = styled.img`
   width: 312px;
   height: 464px;
 
-  ${({ listTile }) => listTile &&css`
+
+  ${({ movies }) => movies &&css`
     width: 292px;
     height: 434px;
+    border-radius: 5px;
   `};
 `;
 
@@ -26,7 +29,7 @@ export const Title = styled.header`
   font-weight: 600;
   font-size: 36px;
 
-  ${({ listTile }) => listTile &&css`
+  ${({ movies }) => movies &&css`
     font-weight: 500;
     font-size: 22px;
     padding-top: 16px;
@@ -38,7 +41,7 @@ export const Subtitle = styled.p`
   margin-top: 24px;
   font-weight: normal;
 
-  ${({ listTile }) => listTile &&css`
+  ${({ movies }) => movies &&css`
     font-weight: normal;
     font-size: 16px;
     margin: 0;

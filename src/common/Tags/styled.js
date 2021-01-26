@@ -1,9 +1,11 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const StyledTags = styled.li`
+export const StyledTags = styled.ul`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
 `;
 
 export const TagsItem = styled.li`

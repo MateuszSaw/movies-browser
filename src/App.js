@@ -5,7 +5,6 @@ import { toMovieDetails, toMoviesPage} from './routes';
 import MoviesPage from './features/movies/MoviesPage';
 import MovieDetails from './features/movies/MovieDetails';
 
-
 function App() {
   return (
     <HashRouter>

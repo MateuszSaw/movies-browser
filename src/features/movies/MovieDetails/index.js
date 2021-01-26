@@ -1,12 +1,10 @@
-import Container from "../../../common/Container";
-import  Tile  from "../../../common/tiles/Tile";
+import React from 'react';
 
 function MovieDetails() {
   return (
-    <Container>
-      <Tile>
-      </Tile>
-    </Container>
+<div>
+  
+</div>
   )
 }
 export default MovieDetails;
