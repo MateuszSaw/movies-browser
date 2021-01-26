@@ -22,4 +22,5 @@ export const getGenreFromApi = async () => {
   return await response.json();
 };
 
+export default { dataFromApi, getGenreFromApi };
 

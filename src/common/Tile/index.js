@@ -4,7 +4,6 @@
   import Tags from '../Tags';
 
  const Tile = ({ title, poster, description, subtitle, details, vote, voteAverage, genresId }) => {
-   console.log(genresId);
    return (
     <Wrapper movies>
       <Poster
