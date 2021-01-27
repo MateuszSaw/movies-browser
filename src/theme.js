@@ -7,6 +7,7 @@ export const theme = {
     black: "#18181B",
     darkerGrey: "#7E839A",
     scienceBlue: "#0044CC",
+    silver: "#C4C4C4",
   },
   breakpoints: {
     mobile: 767,

@@ -5,7 +5,7 @@ import { StyledTags, TagsItem } from './styled';
 
 const Tags = ({ genresId }) => {
   const genresList = useSelector(selectGenres);
-  
+
   return(
     <StyledTags>
       {genresId.map(genre =>

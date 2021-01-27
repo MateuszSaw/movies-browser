@@ -1,33 +1,37 @@
  import React from 'react';
- import  {  Poster, Wrapper, TileContent, Description, Title, Subtitle, Details, DetailsCategory, RatesWrapper, AverageRate, StarIcon } from './styled';
- import star from '../images/star.svg'
+ import  { Poster, Wrapper, TileContent, Description, Title, Subtitle, Details } from './styled';
+ import camera from '../images/camera.svg';
   import Tags from '../Tags';
+import Rates from '../Rates';
 
- const Tile = ({ title, poster, description, subtitle, details, vote, voteAverage, genresId }) => {
+ const Tile = ({ title, poster, subtitle, description, details, vote, voteAverage, genresId, movies }) => {
    return (
     <Wrapper movies>
       <Poster
-        movies
-        src={poster ? `https://image.tmdb.org/t/p/w342/${poster}` : "No image Here"}
-        alt={title}/>
+        movies={movies}
+        noImage={!poster}
+        src={poster ?
+          `https://image.tmdb.org/t/p/w342/${poster}`:
+          camera
+        }
+        alt={poster && title}/>
       <TileContent>
-        <Title movies>{title}</Title>
-        <Subtitle movies>
+        <Title movies={movies}>{title}</Title>
+        <Subtitle movies={movies}>
           {subtitle.slice(0,4)}
         </Subtitle>
-        {!!details ||
+        {details &&
           <Details>
             {details}
           </Details>
         }
         <Tags genresId={genresId}/>
-        <RatesWrapper>
-          <StarIcon src={star} alt='' />
-          <AverageRate>{vote}</AverageRate>
-          <AverageRate>/10</AverageRate>
-          <AverageRate>{voteAverage} votes</AverageRate>
-        </RatesWrapper>
-        {!!description ||
+        <Rates
+          movies={movies}
+          vote={vote}
+          voteAverage={voteAverage}
+        />
+        { description &&
         <Description>
           {description}
         </Description>

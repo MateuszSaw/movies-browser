@@ -4,25 +4,38 @@ export const Wrapper = styled.div`
   background-color: ${({ theme })=> theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
   padding: 40px;
+  display: grid;
 
   ${({ movies }) => movies && css`
     padding: 16px;
+    grid-template-rows: auto 1fr;
   `}
 `;
 
 export const Poster = styled.img`
   width: 312px;
   height: 464px;
+  object-position: center center;
+  object-fit: cover;
+  background-color: ${({ theme }) => theme.colors.silver};
 
-
-  ${({ movies }) => movies &&css`
+  ${({ movies }) => movies && css`
     width: 292px;
     height: 434px;
     border-radius: 5px;
+    margin-bottom: 16px;
+  `};
+
+  ${({ noImage }) => noImage && css`
+    object-fit: initial;
   `};
 `;
 
 export const TileContent = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(3, auto) 1fr;
+  gap: 8px;
 `;
 
 export const Title = styled.header`
@@ -32,7 +45,6 @@ export const Title = styled.header`
   ${({ movies }) => movies &&css`
     font-weight: 500;
     font-size: 22px;
-    padding-top: 16px;
   `};
 `;
 
@@ -41,11 +53,10 @@ export const Subtitle = styled.p`
   margin-top: 24px;
   font-weight: normal;
 
-  ${({ movies }) => movies &&css`
+  ${({ movies }) => movies && css`
     font-weight: normal;
     font-size: 16px;
     margin: 0;
-    padding: 8px 0;
     color: ${({ theme }) => theme.colors.darkerGrey};
   `};
 `;
@@ -61,23 +72,6 @@ export const DetailsCategory = styled.span`
   margin-right: 8px;
 
 `;
-
-export const RatesWrapper = styled.div`
-  margin-top: 24px;
-  display: flex;
-  align-items: flex-end;
-`;
-
-export const StarIcon = styled.img`
-  margin-right: 8px;
-
-`;
-
-export const AverageRate = styled.span`
-  font-size: 16px;
-  margin-right: 8px;
-`;
-
 
 export const Description = styled.p`
   font-size: 20px;
