@@ -103,7 +103,7 @@ export const Input = styled.input`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.darkerGrey};
   margin-left: 10px;
-  width: 80%;
+  outline: none;
 `;
 
 export const SearchImage = styled.img`

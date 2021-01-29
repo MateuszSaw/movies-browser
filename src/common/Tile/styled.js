@@ -9,6 +9,11 @@ export const Wrapper = styled.div`
   ${({ movies }) => movies && css`
     padding: 16px;
     grid-template-rows: auto 1fr;
+
+    @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    grid-template-columns: auto 1fr;
+    grid-gap: 0 16px;
+  }
   `}
 `;
 
@@ -24,6 +29,12 @@ export const Poster = styled.img`
     height: 434px;
     border-radius: 5px;
     margin-bottom: 16px;
+
+    @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+      width: 114px;
+      height: 169px;
+      margin-bottom: initial;
+  }
   `};
 
   ${({ noImage }) => noImage && css`
@@ -32,9 +43,19 @@ export const Poster = styled.img`
 `;
 
 export const TileContent = styled.div`
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+    justify-content: initial;
+    max-height: 114px;
+  }
+`;
+export const ContentWrapper = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, auto) 1fr;
+  grid-template-columns: 1fr;
+  align-content: stretch;
   gap: 8px;
 `;
 
@@ -45,6 +66,10 @@ export const Title = styled.header`
   ${({ movies }) => movies &&css`
     font-weight: 500;
     font-size: 22px;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+        font-size: 16px;
+      }
   `};
 `;
 
@@ -58,6 +83,10 @@ export const Subtitle = styled.p`
     font-size: 16px;
     margin: 0;
     color: ${({ theme }) => theme.colors.darkerGrey};
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+        font-size: 13px;
+      }
   `};
 `;
 

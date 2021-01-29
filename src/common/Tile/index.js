@@ -1,5 +1,5 @@
  import React from 'react';
- import  { Poster, Wrapper, TileContent, Description, Title, Subtitle, Details } from './styled';
+ import  { Poster, Wrapper, TileContent, Description, Title, Subtitle, Details, ContentWrapper } from './styled';
  import camera from '../images/camera.svg';
   import Tags from '../Tags';
 import Rates from '../Rates';
@@ -16,16 +16,20 @@ import Rates from '../Rates';
         }
         alt={poster && title}/>
       <TileContent>
-        <Title movies={movies}>{title}</Title>
-        <Subtitle movies={movies}>
-          {subtitle.slice(0,4)}
-        </Subtitle>
-        {details &&
-          <Details>
-            {details}
-          </Details>
-        }
-        <Tags genresId={genresId}/>
+        <ContentWrapper>
+          <Title movies={movies}>{title}</Title>
+          {subtitle &&
+            <Subtitle movies={movies}>
+                {subtitle.slice(0,4)}
+            </Subtitle>
+          }
+          {details &&
+            <Details>
+              {details}
+            </Details>
+          }
+          <Tags genresId={genresId}/>
+        </ContentWrapper>
         <Rates
           movies={movies}
           vote={vote}

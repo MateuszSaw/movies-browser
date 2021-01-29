@@ -15,6 +15,11 @@ export const TagsItem = styled.li`
   font-size: 14px;
   text-align: center;
   margin: 0 8px 8px 0;
+
+  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+    padding: 4px 8px;
+    font-size: 10px;
+  }
 `;
 
 
