@@ -1,7 +1,7 @@
 import React from 'react';
 import { toMoviesPage } from '../../routes';
 import {ReactComponent as Warning } from "../images/alert.svg"
-import { Button, HeadText, Text, Wrapper } from './style';
+import { Button, HeadText, Text, Wrapper } from './styled';
 import { Link } from "react-router-dom";
 
 export const Error = () => {

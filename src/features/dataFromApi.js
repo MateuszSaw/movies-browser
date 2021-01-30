@@ -1,26 +1,39 @@
-const apiKey = "api_key=4cad831e5b0cc0ded624dfeaaa8dbfb9";
-const baseURL = "https://api.themoviedb.org/3/";
+import axios from "axios";
 
+const apiKey = "?api_key=4cad831e5b0cc0ded624dfeaaa8dbfb9";
+const baseURL = "https://api.themoviedb.org/3/";
+const language = "&language=en-US";
 
 export const dataFromApi = async () => {
-
-  const response = await fetch(`${baseURL}movie/popular?${apiKey}`);
-
-  if (response.ok){
-    new Error(response.statusText);
-  }
-  const movies = await response.json();
-   return movies;
+  let response;
+  await axios.get(`${baseURL}movie/popular${apiKey}${language}`)
+    .then( data => response = data)
+    .catch((error) => {
+      console.error(error.message)
+    })
+  const data = response.data;
+  return data;
 };
 
 export const getGenreFromApi = async () => {
-  const response = await fetch(`${baseURL}genre/movie/list?${apiKey}`);
-
-  if(response.ok){
-    new Error(response.statusText)
-  }
-  return await response.json();
+  let response;
+  await axios.get(`${baseURL}genre/movie/list${apiKey}${language}`)
+    .then( data => response = data)
+    .catch((error) => {
+      console.error(error.message)
+    })
+  const data = response.data;
+  return data;
 };
 
-export default { dataFromApi, getGenreFromApi };
+export const getDetailsFromApi = async (id) => {
+  let response;
+  await axios.get(`${baseURL}movie/${id}${apiKey}${language}`)
+    .then( data => response = data)
+    .catch((error) => {
+      console.error(error.message)
+    })
+    const data = response.data;
+    return data;
+};
 

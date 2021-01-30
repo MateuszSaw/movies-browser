@@ -107,4 +107,5 @@ export const Input = styled.input`
 `;
 
 export const SearchImage = styled.img`
+  width: 24px;
 `;

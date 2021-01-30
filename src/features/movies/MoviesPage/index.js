@@ -6,17 +6,16 @@ import { Error } from "../../../common/Error";
 import Container from "../../../common/Container";
 import Tile from "../../../common/Tile";
 import Section from "../../../common/Section";
-import List from "../../../common/List";
+import { List } from "../../../common/List";
 
-
-const MoviesPage = () => {
+function MoviesPage () {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchMovies());
 
     return (resetState());
-  },[]);
+  },[dispatch]);
 
   const loading = useSelector(selectLoadingStatus);
   const error = useSelector(selectErrorStatus);
@@ -28,15 +27,14 @@ const MoviesPage = () => {
         <Loading /> :
         error ?
           <Error /> :
-        moviesList.length > 0 &&
-        <Section
-          title="Most popular"
-          body={
+        moviesList.length  &&
+        <Section title="Most popular">
             <List movies>
               {moviesList.map(movie =>
                   <Tile
                     movies
                     key={movie.id}
+                    id={movie.id}
                     title={movie.title}
                     poster={movie.poster_path}
                     subtitle={movie.release_date}
@@ -46,8 +44,7 @@ const MoviesPage = () => {
                   />
               )}
             </List>
-          }
-        />
+        </Section>
       }
     </Container>
   );

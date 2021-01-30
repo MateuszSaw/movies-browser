@@ -1,19 +1,29 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(Link)`
   background-color: ${({ theme })=> theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
   padding: 40px;
   display: grid;
+  height: 100%;
+  text-decoration: none;
+  color: unset;
+
 
   ${({ movies }) => movies && css`
     padding: 16px;
     grid-template-rows: auto 1fr;
+    transition: 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
 
     @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
-    grid-template-columns: auto 1fr;
-    grid-gap: 0 16px;
-  }
+      grid-template-columns: auto 1fr;
+      grid-gap: 0 16px;
+    }
   `}
 `;
 

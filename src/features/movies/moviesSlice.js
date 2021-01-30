@@ -38,9 +38,7 @@ fetchGenres,
 } = moviesSlice.actions;
 
 export const selectMoviesState = (state) => state.movies;
-export const selectMovies = (state) => selectMoviesState(state).movies;
-export const selectMoviesList = (state) => selectMoviesState(state).movies.results;
-export const selectMovie = (state) => selectMoviesState(state).movie;
+export const selectMoviesList = (state)=> selectMoviesState(state).movies.results;
 export const selectLoadingStatus = (state) => selectMoviesState(state).loading;
 export const selectErrorStatus = (state) => selectMoviesState(state).isError;
 
