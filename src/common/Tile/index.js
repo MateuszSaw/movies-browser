@@ -1,21 +1,23 @@
 import React from 'react';
-import  { Poster, Wrapper, TileContent, Description, Title, Subtitle, Details, ContentWrapper } from './styled';
+import  { Poster, Wrapper, TileContent, Description, Title, Subtitle, ContentWrapper } from './styled';
 import camera from '../images/camera.svg';
 import Tags from '../Tags';
 import Rates from '../Rates';
+import MetaData from '../MetaData';
 import { toMovieDetails } from '../../routes';
 
 const Tile = ({
   title,
   poster,
   subtitle,
-  description,
-  details,
   vote,
   voteAverage,
   genresId,
-  genres,
+  production,
+  releaseDate,
+  description,
   movies,
+  metaDataOnMobile,
    id }) => {
   return (
     <Wrapper
@@ -30,35 +32,36 @@ const Tile = ({
         camera
       }
       alt={poster && title}/>
-    <TileContent>
-      <ContentWrapper>
-        <Title movies={movies}>{title}</Title>
-        {subtitle &&
-          <Subtitle movies={movies}>
-              {subtitle.slice(0,4)}
-          </Subtitle>
-        }
-        {details &&
-          <Details>
-            {details}
-          </Details>
-        }
-        {genresId ?
-          <Tags genresId={genresId}/> :
-          <Tags genres = {genres}/>
-      }
-      </ContentWrapper>
-      <Rates
-        movies={movies}
-        vote={vote}
-        voteAverage={voteAverage}
-      />
-      { description &&
+    <TileContent movies={movies}>
+        <ContentWrapper movies={movies} metaDataOnMobile={metaDataOnMobile}>
+          <Title movies={movies}>{title}</Title>
+          {subtitle &&
+            <Subtitle movies={movies}>
+                {subtitle.slice(0,4)}
+            </Subtitle>
+          }
+          {!movies && production &&
+            <MetaData
+              production = {production}
+              releaseDate={releaseDate}
+            />
+          }
+
+          {genresId &&
+            <Tags genresId={genresId}/>
+          }
+        </ContentWrapper>
+        <Rates
+            movies={movies}
+            vote={vote}
+            voteAverage={voteAverage}
+        />
+    </TileContent>
+    {description &&
       <Description>
         {description}
       </Description>
-      }
-    </TileContent>
+    }
     </Wrapper>
   );
 };

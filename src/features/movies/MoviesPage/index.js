@@ -29,7 +29,7 @@ function MoviesPage () {
           <Error /> :
         moviesList.length  &&
         <Section title="Most popular">
-            <List movies>
+            <List>
               {moviesList.map(movie =>
                   <Tile
                     movies

@@ -5,15 +5,29 @@ export const Wrapper = styled(Link)`
   background-color: ${({ theme })=> theme.colors.white};
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
   padding: 40px;
-  display: grid;
-  height: 100%;
+  max-width: 1368px;
   text-decoration: none;
   color: unset;
+  display: block;
+  min-height: 544px;
 
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    padding: 16px;
+    min-height: unset;
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    grid-template-areas:
+    "image content"
+    "description description"
+    ;
+  }
 
   ${({ movies }) => movies && css`
-    padding: 16px;
+    display: grid;
+    grid-gap: 0 16px;
     grid-template-rows: auto 1fr;
+    width: unset;
+    padding: 16px;
     transition: 0.3s;
 
   &:hover{
@@ -22,7 +36,7 @@ export const Wrapper = styled(Link)`
 
     @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
       grid-template-columns: auto 1fr;
-      grid-gap: 0 16px;
+      grid-gap: unset;
     }
   `}
 `;
@@ -33,60 +47,97 @@ export const Poster = styled.img`
   object-position: center center;
   object-fit: cover;
   background-color: ${({ theme }) => theme.colors.silver};
+  border-radius: 5px;
+  float: left;
+  margin: 0 40px 40px 0;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+      width: 114px;
+      height: 169px;
+      margin-bottom: initial;
+      margin: 0 16px 0 0;
+      grid-area: image;
+    }
 
   ${({ movies }) => movies && css`
     width: 292px;
     height: 434px;
-    border-radius: 5px;
-    margin-bottom: 16px;
-
-    @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
-      width: 114px;
-      height: 169px;
-      margin-bottom: initial;
-  }
+    margin: 0 0 16px 0;
   `};
 
   ${({ noImage }) => noImage && css`
-    object-fit: initial;
+    object-fit: scale-down;
   `};
 `;
 
 export const TileContent = styled.div`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
-    justify-content: initial;
-    max-height: 114px;
-  }
+      min-height: 130px;
+      flex-wrap: nowrap;
+    }
+
+  ${({movies}) => movies && css`
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+      justify-content: start;
+      min-height: unset;
+    }
+  `};
 `;
+
 export const ContentWrapper = styled.div`
   display: grid;
+  grid-gap: 24px;
   grid-template-columns: 1fr;
-  align-content: stretch;
-  gap: 8px;
+
+  ${({ metaDataOnMobile }) => metaDataOnMobile && css`
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+      grid-gap: unset;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      height: 100%;
+    };
+  `};
+
+  ${({ movies }) => movies && css`
+    grid-gap: 8px;
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+      grid-area: content;
+    }
+  `}
 `;
 
 export const Title = styled.header`
   font-weight: 600;
   font-size: 36px;
 
+  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+    font-size: 16px;
+    font-weight: 500;
+  }
+
   ${({ movies }) => movies &&css`
     font-weight: 500;
     font-size: 22px;
-
-    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
-        font-size: 16px;
-      }
   `};
 `;
 
 export const Subtitle = styled.p`
   font-size: 22px;
-  margin-top: 24px;
   font-weight: normal;
+  margin: 0;
+
+  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+    font-size: 13px;
+    color: ${({ theme }) => theme.colors.darkerGrey};
+  }
 
   ${({ movies }) => movies && css`
     font-weight: normal;
@@ -94,26 +145,19 @@ export const Subtitle = styled.p`
     margin: 0;
     color: ${({ theme }) => theme.colors.darkerGrey};
 
-    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
-        font-size: 13px;
-      }
   `};
-`;
-
-export const Details = styled.div`
-  font-size: 18px;
-  line-height: 1.5;
-  margin-top: 24px;
-`;
-
-export const DetailsCategory = styled.span`
-  color: ${({ theme }) => theme.colors.stormGray};
-  margin-right: 8px;
-
 `;
 
 export const Description = styled.p`
   font-size: 20px;
+  margin: 24px 0 0 0 ;
   line-height: 1.6;
-  margin-top: 24px;
+  text-align: justify;
+
+  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+    margin: 16px 0 0 0 ;
+    font-size: 14px;
+    grid-area: description;
+
+  }
 `;

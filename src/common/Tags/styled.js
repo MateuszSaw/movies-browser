@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
-export const StyledTags = styled.ul`
+export const StyledTags = styled.div`
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
+  place-self: flex-start;
 `;
 
-export const TagsItem = styled.li`
+export const TagsItem = styled.p`
   background-color: ${({ theme }) => theme.colors.mystic};
   padding: 8px 16px;
   border-radius: 5px;

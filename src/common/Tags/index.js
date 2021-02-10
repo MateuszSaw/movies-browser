@@ -8,7 +8,7 @@ const Tags = ({ genresId }) => {
 
   return(
     <StyledTags>
-      { genresId && genresId?.map(genre =>
+      { genresId?.map(genre =>
         <TagsItem key={genre.name  || genre}>
           { genre.name ||
           genresList.genres[genresList.genres.findIndex(({ id }) => id === genre)].name}

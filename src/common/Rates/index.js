@@ -1,22 +1,34 @@
 import React from 'react';
 import starIcon from '../images/star.svg';
-import { VoteAverage, RatesWrapper, StarIcon, Votes } from './styled';
+import { VoteAverage, RatesWrapper, StarIcon, Votes, MaxPoint } from './styled';
 
-const Rates = ({ vote, voteAverage, movies }) => {
+const Rates = ({ vote, voteAverage, movies, backdrop }) => {
   return(
     <RatesWrapper movies={movies}>
       {voteAverage ?
       <>
-       <StarIcon src={starIcon}></StarIcon>
-       <VoteAverage movies={movies}>{voteAverage}</VoteAverage>
+       <StarIcon
+       src={starIcon}
+       backdrop={backdrop}
+       />
+       <VoteAverage movies={movies} backdrop={backdrop}>
+       {voteAverage?.toLocaleString("pl-PL", {maximumFractionDigits: 1, minimumFractionDigits: 1})}
+         </VoteAverage>
        {!movies &&
-         <Votes>/ 10</Votes>
+         <MaxPoint backdrop={backdrop}>/ 10</MaxPoint>
        }
-       <Votes movies={movies}>{vote} votes</Votes>
+        <Votes
+          movies={movies}
+          backdrop={backdrop}
+        >
+        {vote} votes</Votes>
       </>
       :
-      <Votes movies={movies}>No votes yet</Votes>
-
+      <Votes
+        movies={movies}
+        backdrop={backdrop}
+      >
+      No votes yet</Votes>
       }
     </RatesWrapper>
   );

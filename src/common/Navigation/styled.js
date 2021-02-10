@@ -5,6 +5,8 @@ const activeClassName = "active";
 
 export const StyledNavigation = styled.nav`
   background-color: ${({ theme }) => theme.colors.black};
+  position: relative;
+  z-index: 1;
 `
 export const NavigationWrapper = styled.div`
   display: flex;
