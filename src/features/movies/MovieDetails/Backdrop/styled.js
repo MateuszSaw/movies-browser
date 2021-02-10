@@ -48,6 +48,9 @@ padding: 56px 0;
 color: ${({ theme }) => theme.colors.white};
 
 @media(max-width: ${({ theme }) => theme.breakpoints.desktop}px){
+    padding: 32px;
+  }
+@media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
     padding: 8px 16px;
   }
 `;
@@ -55,10 +58,12 @@ export const Title = styled.h1`
   font-size: 64px;
   margin: 0 0 8px 0;
 
-  @media(max-width: ${({ theme }) => theme.breakpoints.desktop}px){
+  @media(max-width: ${({ theme }) => theme.breakpoints.tablet}px){
+  font-size: 42px;
+  margin: 0;
+  }
+  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
   font-size: 24px;
   margin: 0;
   }
 `;
-
-

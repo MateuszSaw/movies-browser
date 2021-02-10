@@ -1,31 +1,35 @@
 import styled, { css } from "styled-components";
+import { ReactComponent as StarIcon } from '../images/star.svg'
 
 export const RatesWrapper = styled.div`
   margin-top: 16px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   max-width: 200px;
   flex-wrap: wrap;
   gap: 16px 0;
 
   @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
     margin-top: 4px;
+    align-items: flex-end;
   }
   ${({ movies }) => movies && css`
     margin-top: 10px;
   `};
 `;
 
-export const StarIcon = styled.img`
-  width: 24px;
+export const Star = styled(StarIcon)`
+  width: auto;
+  height: 24px;
   margin-right: 8px;
+ transform: translateY(-8%);
 
   ${({ backdrop }) => backdrop && css`
-    width: 40px;
+    height: 40px;
   `};
 
   @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
-    width: 16px;
+    height: 16px;
   };
 `;
 
