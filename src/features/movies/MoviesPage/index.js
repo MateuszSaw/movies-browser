@@ -5,8 +5,8 @@ import { Loading } from "../../../common/Loding";
 import { Error } from "../../../common/Error";
 import Container from "../../../common/Container";
 import Tile from "../../../common/Tile";
-import Section from "../../../common/Section";
-import { List } from "../../../common/List";
+import List from "../../../common/List";
+import { Header } from "../../../common/Header";
 
 function MoviesPage () {
   const dispatch = useDispatch();
@@ -28,7 +28,8 @@ function MoviesPage () {
         error ?
           <Error /> :
         moviesList.length  &&
-        <Section title="Most popular">
+        <>
+        <Header>Most Popular</Header>
             <List>
               {moviesList.map(movie =>
                   <Tile
@@ -44,7 +45,7 @@ function MoviesPage () {
                   />
               )}
             </List>
-        </Section>
+        </>
       }
     </Container>
   );

@@ -7,6 +7,7 @@ const detailsSlice = createSlice({
     loading: true,
     isError: false,
     genres: [],
+    personDetails: [],
 
   },
   reducers: {
@@ -28,6 +29,9 @@ const detailsSlice = createSlice({
     fetchGenres: (state, { payload: genres}) => {
       state.genres = genres;
     },
+    fetchPersonDetails: (state, { payload: personDetails}) => {
+      state.personDetails = personDetails;
+    },
   },
 });
 
@@ -37,6 +41,7 @@ fetchDetailsSuccess,
 fetchDetailsError,
 resetState,
 fetchGenres,
+fetchPersonDetails,
 } = detailsSlice.actions;
 
 export const selectDetailsState = (state) => state.details;
@@ -45,5 +50,10 @@ export const selectDetailsLoadingStatus = (state) => selectDetailsState(state).l
 export const selectDetailsErrorStatus = (state) => selectDetailsState(state).isError;
 
 export const selectGenres = (state) => selectDetailsState(state).genres;
+
+export const selectPersonDetailsState = (state) => state.personDetails;
+export const selectPersonDetails = (state) => selectDetailsState(state).personDetails;
+export const selectPersonDetailsCrew = (state) => selectPersonDetails(state).crew;
+export const selectPersonDetailsCast = (state) => selectPersonDetails(state).cast;
 
 export default detailsSlice.reducer;

@@ -1,17 +1,15 @@
-import styled from 'styled-components';
+import React from 'react';
+import { Wrapper } from './styled.js'
 
-export const List = styled.div`
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 324px);
-  grid-gap: 24px;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
+export const List = ({ movies, persons, children }) => {
+  return (
+    <Wrapper
+      movies={movies}
+      persons={persons}
+    >
+      {children}
+    </Wrapper>
+  );
+};
 
-  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
-    grid-template-columns: auto;
-    grid-gap: 16px;
-  }
-`;
-
+export default List;

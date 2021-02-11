@@ -3,10 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import Container from '../../../common/Container';
 import { Error } from '../../../common/Error';
+import List from '../../../common/List';
 import { Loading } from '../../../common/Loding';
+import Section from '../../../common/Section';
 import Tile from '../../../common/Tile';
+import PersonTile from '../../../common/Tile/PersonTile';
 import { Backdrop } from './Backdrop';
-import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus } from './detailsSlice';
+import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus, selectPersonDetailsCast, selectPersonDetailsCrew } from './detailsSlice';
 
 function MovieDetails () {
   const { id } = useParams();
@@ -14,6 +17,8 @@ function MovieDetails () {
   const loading = useSelector(selectDetailsLoadingStatus);
   const error = useSelector(selectDetailsErrorStatus);
   const details = useSelector(selectDetails);
+  const crew = useSelector(selectPersonDetailsCrew);
+  const cast = useSelector(selectPersonDetailsCast);
 
   useEffect(() => {
     dispatch(fetchDetails(id));
@@ -50,6 +55,30 @@ function MovieDetails () {
                 description={details.overview}
               />
         }
+          <Section title="Cast">
+            <List persons>
+            {cast?.map(person =>
+              <PersonTile
+                key={person.id}
+                name={person.name}
+                role={person.character}
+                poster={person.profile_path}
+              />
+            )}
+            </List>
+          </Section>
+          <Section title="Crew">
+            <List persons>
+            {crew?.map(person =>
+              <PersonTile
+                key={person.id}
+                name={person.name}
+                role={person.job}
+                poster={person.profile_path}
+              />
+            )}
+            </List>
+          </Section>
       </Container>
     </>
   );

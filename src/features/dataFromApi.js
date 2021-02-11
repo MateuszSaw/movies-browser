@@ -36,4 +36,14 @@ export const getDetailsFromApi = async (id) => {
     const data = response.data;
     return data;
 };
+export const getCrewFromApi = async (id) => {
+  let response;
+  await axios.get(`${baseURL}movie/${id}/credits${apiKey}${language}`)
+    .then( data => response = data)
+    .catch((error) => {
+      console.error(error.message)
+    })
+    const data = response.data;
+    return data;
+};
 
