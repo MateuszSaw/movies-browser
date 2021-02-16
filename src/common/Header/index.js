@@ -8,6 +8,6 @@ export const Header = styled.header`
 
   @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
     font-size: 18px;
-    margin-top: 24px;
+    margin: 24px 0 12px 0;
   }
 `;

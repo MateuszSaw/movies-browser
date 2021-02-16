@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
  const Container = styled.main`
   max-width: 1368px;

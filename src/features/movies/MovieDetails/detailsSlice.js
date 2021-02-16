@@ -31,6 +31,7 @@ const detailsSlice = createSlice({
     },
     fetchPersonDetails: (state, { payload: personDetails}) => {
       state.personDetails = personDetails;
+      state.loading = false;
     },
   },
 });

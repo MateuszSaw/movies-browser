@@ -18,8 +18,8 @@ export const Wrapper = styled.div`
     grid-template-columns: repeat(auto-fill, 208px);
 
     @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
-    grid-template-columns: repeat(auto-fill, 152px);
-  }
+      grid-template-columns: repeat(auto-fill, 152px);
+    }
   `};
 
 

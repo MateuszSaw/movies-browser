@@ -9,8 +9,8 @@ export const Header = styled.header`
   padding: 0;
 
   @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
-    font-size: 18px;
-    margin-top: 24px;
+    font-size: 20px;
+    margin: 21px 0 12px 0;
   }
 `;
 

@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Button } from '../../../common/Button';
 import Container from '../../../common/Container';
 import { Error } from '../../../common/Error';
 import List from '../../../common/List';
@@ -19,6 +20,9 @@ function MovieDetails () {
   const details = useSelector(selectDetails);
   const crew = useSelector(selectPersonDetailsCrew);
   const cast = useSelector(selectPersonDetailsCast);
+
+  const personsListLimit = 12;
+  const [personsCounter, setPersonsCounter] = useState(personsListLimit);
 
   useEffect(() => {
     dispatch(fetchDetails(id));
@@ -39,7 +43,8 @@ function MovieDetails () {
           <Loading /> :
           error ?
             <Error /> :
-            details &&
+            details  &&
+            <>
               <Tile
                 metaDataOnMobile
                 key={details.id}
@@ -54,31 +59,50 @@ function MovieDetails () {
                 releaseDate={details.release_date}
                 description={details.overview}
               />
+                {cast.length &&
+                  <Section title="Cast">
+                    <List persons>
+                      {cast.slice(0, personsCounter).map(person =>
+                        <PersonTile
+                          key={person.id}
+                          name={person.name}
+                          role={person.job}
+                          poster={person.profile_path}
+                        />
+                      )}
+                    </List>
+                    {cast.length > personsListLimit &&
+                      <Button
+                        onClick={() => setPersonsCounter(cast.length > personsCounter ? cast.length : personsListLimit)}
+                      >
+                        {cast.length === personsCounter ? "Hide" : "Show all"}
+                      </Button>
+                    }
+                  </Section>
+                }
+                {crew.length &&
+                  <Section title="Crew">
+                    <List persons>
+                      {crew.slice(0, personsCounter).map(person =>
+                        <PersonTile
+                          key={person.id}
+                          name={person.name}
+                          role={person.job}
+                          poster={person.profile_path}
+                        />
+                      )}
+                    </List>
+                    {crew.length > personsListLimit &&
+                      <Button
+                        onClick={() => setPersonsCounter(crew.length > personsCounter ? crew.length : personsListLimit)}
+                      >
+                        {crew.length === personsCounter ? "Hide" : "Show all"}
+                      </Button>
+                    }
+                  </Section>
+                }
+            </>
         }
-          <Section title="Cast">
-            <List persons>
-            {cast?.map(person =>
-              <PersonTile
-                key={person.id}
-                name={person.name}
-                role={person.character}
-                poster={person.profile_path}
-              />
-            )}
-            </List>
-          </Section>
-          <Section title="Crew">
-            <List persons>
-            {crew?.map(person =>
-              <PersonTile
-                key={person.id}
-                name={person.name}
-                role={person.job}
-                poster={person.profile_path}
-              />
-            )}
-            </List>
-          </Section>
       </Container>
     </>
   );

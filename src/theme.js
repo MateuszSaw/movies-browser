@@ -8,6 +8,7 @@ export const theme = {
     darkerGrey: "#7E839A",
     scienceBlue: "#0044CC",
     silver: "#C4C4C4",
+    pattensBlue: "#D6E4FF",
   },
   breakpoints: {
     mobile: 767,

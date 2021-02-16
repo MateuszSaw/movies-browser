@@ -1,9 +1,10 @@
 import React from 'react';
 import Rates from '../../../../common/Rates';
-import { Content, Image, Title, Wrapper } from './styled';
+import { Content, Image, Title, Wrapper, Container } from './styled';
 
 export const Backdrop = ({ backdrop, title, vote, voteAverage }) => {
   return (
+   <Container>
     <Wrapper>
       <Image
         src={backdrop ?
@@ -20,7 +21,7 @@ export const Backdrop = ({ backdrop, title, vote, voteAverage }) => {
         backdrop={backdrop}
       />
       </Content>
-
     </Wrapper>
+   </Container>
   );
 };
