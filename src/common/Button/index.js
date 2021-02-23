@@ -10,12 +10,9 @@ export const Button = styled.button`
   font-size: 20px;
   cursor: pointer;
   outline: none;
-  transition: 0.3s;
+  transition: filter 0.3s;
 
   &:hover{
-    transform: scale(1.1);
-  }
-  &:active{
-    transform: scale(1.2);
+    filter: brightness(90%);
   }
 `;

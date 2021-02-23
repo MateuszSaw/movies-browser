@@ -21,6 +21,4 @@ export const Wrapper = styled.div`
       grid-template-columns: repeat(auto-fill, 152px);
     }
   `};
-
-
 `;

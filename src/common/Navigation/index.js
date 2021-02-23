@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyledNavLink, List, Input, Item, InputWrapper, LogoImage, NavigationContent, NavigationWrapper, SearchImage, StyledLink, StyledNavigation } from './styled';
+import { StyledNavLink, List, Item, LogoImage, NavigationContent, NavigationWrapper, StyledLink, StyledNavigation } from './styled';
 import camera from '../images/camera.svg'
-import search from '../images/search.svg'
 import { toMovieDetails, toMoviesPage } from '../../routes';
+import { Search } from './Search';
 
 const Navigation = () => {
   return (
@@ -22,10 +22,7 @@ const Navigation = () => {
             </Item>
           </List>
         </NavigationContent>
-        <InputWrapper>
-          <SearchImage src={search} alt=''/>
-          <Input placeholder = "Search for movies ..."/>
-        </InputWrapper>
+        <Search />
       </NavigationWrapper>
     </StyledNavigation>
   );

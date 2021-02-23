@@ -25,6 +25,7 @@ const detailsSlice = createSlice({
     resetState: (state) => {
       state.loading = true;
       state.isError = false;
+      state.details = [];
     },
     fetchGenres: (state, { payload: genres}) => {
       state.genres = genres;

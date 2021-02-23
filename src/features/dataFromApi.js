@@ -4,9 +4,9 @@ const apiKey = "?api_key=4cad831e5b0cc0ded624dfeaaa8dbfb9";
 const baseURL = "https://api.themoviedb.org/3/";
 const language = "&language=en-US";
 
-export const dataFromApi = async () => {
+export const dataFromApi = async ({ page }) => {
   let response;
-  await axios.get(`${baseURL}movie/popular${apiKey}${language}`)
+  await axios.get(`${baseURL}movie/popular${apiKey}${language}&page=${page}`)
     .then( data => response = data)
     .catch((error) => {
       console.error(error.message)

@@ -1,11 +1,11 @@
 import { dataFromApi, getGenreFromApi } from "../dataFromApi";
-import { call, delay, put, takeEvery, } from "redux-saga/effects";
-import { fetchMoviesSuccess, fetchMovies, fetchMoviesError, fetchGenres } from './moviesSlice';
+import { call, delay, put, takeEvery, takeLatest, } from "redux-saga/effects";
+import { fetchMoviesSuccess, fetchMovies, fetchMoviesError, fetchGenres, selectTotalPages } from './moviesSlice';
 
-function* fetchMoviesListHandler(){
+function* fetchMoviesListHandler({ payload: page }){
   try{
-    yield delay(1000);
-    const movies = yield call(dataFromApi);
+    yield delay(500);
+    const movies = yield call(dataFromApi, page);
     yield put(fetchMoviesSuccess(movies));
   } catch (error){
     yield put(fetchMoviesError());
@@ -22,6 +22,6 @@ function* fetchGenresHandler(){
 };
 
 export function* moviesSaga(){
- yield takeEvery(fetchMovies.type, fetchMoviesListHandler);
+ yield takeLatest(fetchMovies.type, fetchMoviesListHandler);
  yield takeEvery(fetchMovies.type, fetchGenresHandler);
 }

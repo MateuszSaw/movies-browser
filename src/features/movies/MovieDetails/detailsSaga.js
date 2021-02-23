@@ -5,7 +5,7 @@ import { fetchDetails, fetchDetailsError, fetchDetailsSuccess, fetchPersonDetail
 
 function* fetchDetailsListHandler({ payload: id }){
   try{
-    yield delay(1000);
+    // yield delay(500);
     const details = yield call(getDetailsFromApi, id);
     yield put(fetchDetailsSuccess(details));
   } catch (error){

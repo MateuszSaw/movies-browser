@@ -10,11 +10,11 @@ function App() {
     <HashRouter>
       <Navigation />
       <Switch>
+      <Route path={toMovieDetails()}>
+          <MovieDetails />
+        </Route>
         <Route path={toMoviesPage()}>
           <MoviesPage />
-        </Route>
-        <Route path={toMovieDetails()}>
-          <MovieDetails />
         </Route>
         <Route path="/">
           <Redirect to={toMoviesPage()}/>

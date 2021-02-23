@@ -11,7 +11,7 @@ const moviesSlice = createSlice({
     fetchMovies: (state) => {
       state.loading = true;
     },
-    fetchMoviesSuccess:  (state, { payload: movies}) => {
+    fetchMoviesSuccess:  (state, { payload: movies }) => {
       state.movies = movies;
       state.loading = false;
     },
@@ -19,12 +19,13 @@ const moviesSlice = createSlice({
       state.loading = false;
       state.isError = true;
     },
+    fetchGenres: (state, { payload: genres}) => {
+      state.genres = genres;
+    },
     resetState: (state) => {
       state.loading = true;
       state.isError = false;
-    },
-    fetchGenres: (state, { payload: genres}) => {
-      state.genres = genres;
+      state.movies = [];
     },
   },
 });
@@ -39,9 +40,21 @@ fetchGenres,
 
 export const selectMoviesState = (state) => state.movies;
 export const selectMoviesList = (state)=> selectMoviesState(state).movies.results;
+export const selectTotalPages = (state)=> selectMoviesState(state).movies.total_pages;
 export const selectLoadingStatus = (state) => selectMoviesState(state).loading;
 export const selectErrorStatus = (state) => selectMoviesState(state).isError;
 
 export const selectGenres = (state) => selectMoviesState(state).genres;
+
+
+export const selectMoviesByQuery = (state, query) =>{
+  const movies = selectMoviesList(state);
+
+  if(!query || query.trim() === "") {
+    return movies;
+  }
+
+  return movies.filter(({ title }) => title.toUpperCase().includes(query.trim().toUpperCase()));
+};
 
 export default moviesSlice.reducer;

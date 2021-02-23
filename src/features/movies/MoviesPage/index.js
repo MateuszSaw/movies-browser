@@ -1,25 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, resetState, selectErrorStatus, selectLoadingStatus, selectMoviesList } from "../moviesSlice";
+import { fetchMovies, resetState, selectErrorStatus, selectLoadingStatus, selectMoviesByQuery, selectPage, selectPagination, selectPaginationState, selectTotalPages } from "../moviesSlice";
 import { Loading } from "../../../common/Loding";
 import { Error } from "../../../common/Error";
 import Container from "../../../common/Container";
 import Tile from "../../../common/Tile";
 import List from "../../../common/List";
 import { Header } from "../../../common/Header";
+import searchQueryParamName from "../../../searchQueryParamName";
+import { Pagination } from "../../../common/Pagination";
+import { useQueryParameter } from "../../../queryParameters";
 
 function MoviesPage () {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchMovies());
-
-    return (resetState());
-  },[dispatch]);
-
   const loading = useSelector(selectLoadingStatus);
   const error = useSelector(selectErrorStatus);
-  const moviesList = useSelector(selectMoviesList);
+  const query = useQueryParameter(searchQueryParamName);
+  const moviesList = useSelector(state => selectMoviesByQuery(state, query));
+  const totalPages = useSelector(selectTotalPages);
+  const page = useQueryParameter("page");
+
+  useEffect(() => {
+    dispatch(fetchMovies({ page: page || 1, query }));
+    return (() => dispatch(resetState()));
+  }, [dispatch, page, query]);
 
   return (
     <Container>
@@ -29,7 +33,7 @@ function MoviesPage () {
           <Error /> :
         moviesList.length  &&
         <>
-        <Header>Most Popular</Header>
+        <Header>{!query ? "Most Popular" : `Search results for "${query}" (${moviesList.length})`}</Header>
             <List>
               {moviesList.map(movie =>
                   <Tile
@@ -47,6 +51,7 @@ function MoviesPage () {
             </List>
         </>
       }
+      <Pagination actualPage={page} totalPages={totalPages}/>
     </Container>
   );
 }

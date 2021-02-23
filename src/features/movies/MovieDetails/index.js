@@ -20,30 +20,34 @@ function MovieDetails () {
   const details = useSelector(selectDetails);
   const crew = useSelector(selectPersonDetailsCrew);
   const cast = useSelector(selectPersonDetailsCast);
-
   const personsListLimit = 12;
   const [personsCounter, setPersonsCounter] = useState(personsListLimit);
 
   useEffect(() => {
     dispatch(fetchDetails(id));
-
-    return (resetState());
+    return (() => dispatch(resetState()));
   }, [id, dispatch]);
 
   return (
     <>
+    {loading ?
+      <Loading /> :
+      error ?
+        <Error /> :
+        details  &&
       <Backdrop
         backdrop={details.backdrop_path}
         title={details.title}
         vote={details.vote_count}
         voteAverage={details.vote_average}
       />
+    }
       <Container>
         {loading ?
           <Loading /> :
           error ?
             <Error /> :
-            details  &&
+            details.length !==0  &&
             <>
               <Tile
                 metaDataOnMobile
@@ -64,9 +68,9 @@ function MovieDetails () {
                     <List persons>
                       {cast.slice(0, personsCounter).map(person =>
                         <PersonTile
-                          key={person.id}
+                          key={person.id + person.character}
                           name={person.name}
-                          role={person.job}
+                          role={person.character}
                           poster={person.profile_path}
                         />
                       )}
@@ -85,7 +89,7 @@ function MovieDetails () {
                     <List persons>
                       {crew.slice(0, personsCounter).map(person =>
                         <PersonTile
-                          key={person.id}
+                          key={person.id + person.job}
                           name={person.name}
                           role={person.job}
                           poster={person.profile_path}

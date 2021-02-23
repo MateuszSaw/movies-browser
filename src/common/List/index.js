@@ -7,7 +7,7 @@ export const List = ({ movies, persons, children }) => {
       movies={movies}
       persons={persons}
     >
-      {children}
+        {children}
     </Wrapper>
   );
 };
