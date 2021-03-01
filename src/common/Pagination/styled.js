@@ -7,6 +7,10 @@ export const Wrapper = styled.article`
   align-items: center;
   justify-content: center;
   margin: 40px 0 103px 0;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    margin: 30px 0 30px 0;;
+  }
   `;
 
 export const Button = styled.button`
@@ -30,37 +34,70 @@ export const Button = styled.button`
     background: ${({ theme })=> theme.colors.mystic};
     cursor: not-allowed;
   }
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    margin-right: 8px;
+  }
+`;
+
+export const ButtonText = styled.span`
+  font-size: 14px;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+   display: none;
+  }
 `;
 
 export const Text = styled.span`
   margin-right: 4px;
   color: ${({ theme }) => theme.colors.darkerGrey};
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+   font-size: 10px;
+   margin-right: 6px;
+  }
 `;
 
 export const Strong = styled.strong`
   color: ${({ theme }) => theme.colors.black};
   font-weight: 600;
   margin: 0 8px;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    margin: 0 2px;
+  }
 `;
 
-export const Image = styled.img`
+export const PrevioustArrowContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin-right: 8px;
 
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    margin: unset;
+  }
 
+  fill: ${({ theme }) => theme.colors.scienceBlue};
+
+  ${({disabled}) => disabled && css`
+    fill: ${({ theme }) => theme.colors.darkerGrey};
+  `}
 `;
 export const PreviousArrow = styled(Previous)`
-  margin-right: 8px;
-  fill: ${({ theme }) => theme.colors.scienceBlue};
 
-  ${({disabled}) => disabled && css`
-    fill: ${({ theme }) => theme.colors.darkerGrey};
-  `}
+`;
+export const NextArrowContainer = styled(PrevioustArrowContainer)`
+  margin-left: 8px;
+  margin-right: unset;
+
+  @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+    margin: unset;
+  }
 `;
 export const NextArrow = styled(Next)`
-  margin-left: 8px;
   fill: ${({ theme }) => theme.colors.scienceBlue};
 
-  ${({disabled}) => disabled && css`
-    fill: ${({ theme }) => theme.colors.darkerGrey};
-  `}
+${({disabled}) => disabled && css`
+  fill: ${({ theme }) => theme.colors.darkerGrey};
+`}
 `;

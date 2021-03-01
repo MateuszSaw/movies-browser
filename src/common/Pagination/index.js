@@ -1,6 +1,6 @@
 import React from  'react';
 import { useQueryParameter, useReplaceQueryParameter } from '../../queryParameters';
-import { Button, NextArrow, PreviousArrow, Strong, Text, Wrapper } from './styled';
+import { Button, ButtonText, NextArrow, NextArrowContainer, PrevioustArrowContainer, PreviousArrow, Strong, Text, Wrapper } from './styled';
 
 export const Pagination = ({ totalPages }) => {
   const replaceQueryParameter = useReplaceQueryParameter();
@@ -24,30 +24,41 @@ return (
       onClick={() => { onClickChange(1) }}
       disabled={!disabledFirstButton}
     >
-      <PreviousArrow disabled={!disabledFirstButton}/>
-      First
+      <PrevioustArrowContainer disabled={!disabledFirstButton}>
+      <PreviousArrow />
+      <PreviousArrow />
+      </PrevioustArrowContainer>
+      <ButtonText>First</ButtonText>
     </Button>
     <Button
       onClick={() => {onClickChange(+page - 1)}}
       disabled={disabledPreviousButton}
     >
-       <PreviousArrow disabled={disabledPreviousButton}/>
-      Previous
+      <PrevioustArrowContainer disabled={disabledPreviousButton}>
+        <PreviousArrow />
+      </PrevioustArrowContainer>
+       <ButtonText>Previous</ButtonText>
     </Button>
     <Text>Page <Strong>{ page || 1}</Strong> of <Strong>{totalPages}</Strong></Text>
     <Button
       onClick={() => {onClickChange(page === null ? 2 : +page + 1)}}
       disabled={disabledNextButton}
     >
-      Next
+      <ButtonText>Next</ButtonText>
+      <NextArrowContainer >
       <NextArrow disabled={disabledNextButton}/>
+      </NextArrowContainer>
     </Button>
     <Button
       onClick={() => {onClickChange(totalPages)}}
       disabled={disabledLastButton}
     >
-      Last
+      <ButtonText>Last</ButtonText>
+      <NextArrowContainer >
       <NextArrow disabled={disabledLastButton}/>
+      <NextArrow disabled={disabledLastButton}/>
+      </NextArrowContainer>
+
     </Button>
   </Wrapper>
 );
