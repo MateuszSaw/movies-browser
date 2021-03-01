@@ -2,7 +2,6 @@ import React from 'react';
 import { useQueryParameter, useReplaceQueryParameter } from '../../../queryParameters';
 import searchQueryParamName from '../../../searchQueryParamName';
 import search from '../../images/search.svg'
-
 import { Input, InputWrapper, SearchImage } from './styled';
 
 export const Search = () => {
@@ -13,8 +12,9 @@ export const Search = () => {
     replaceQueryParameter({
       key: searchQueryParamName,
       value: target.value.trim() !== "" ? target.value : undefined
-    })
+    });
   };
+
   return (
     <InputWrapper>
       <SearchImage src={search} alt=''/>

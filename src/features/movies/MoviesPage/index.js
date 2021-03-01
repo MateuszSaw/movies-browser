@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, resetState, selectErrorStatus, selectLoadingStatus, selectMoviesByQuery, selectPage, selectPagination, selectPaginationState, selectTotalPages } from "../moviesSlice";
+import { fetchMovies, resetState, selectErrorStatus, selectLoadingStatus, selectMoviesList, selectTotalPages } from "../moviesSlice";
 import { Loading } from "../../../common/Loding";
 import { Error } from "../../../common/Error";
 import Container from "../../../common/Container";
@@ -16,7 +16,7 @@ function MoviesPage () {
   const loading = useSelector(selectLoadingStatus);
   const error = useSelector(selectErrorStatus);
   const query = useQueryParameter(searchQueryParamName);
-  const moviesList = useSelector(state => selectMoviesByQuery(state, query));
+  const moviesList = useSelector(selectMoviesList)
   const totalPages = useSelector(selectTotalPages);
   const page = useQueryParameter("page");
 
@@ -51,7 +51,7 @@ function MoviesPage () {
             </List>
         </>
       }
-      <Pagination actualPage={page} totalPages={totalPages}/>
+      <Pagination totalPages={totalPages}/>
     </Container>
   );
 }

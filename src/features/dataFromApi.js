@@ -4,9 +4,19 @@ const apiKey = "?api_key=4cad831e5b0cc0ded624dfeaaa8dbfb9";
 const baseURL = "https://api.themoviedb.org/3/";
 const language = "&language=en-US";
 
-export const dataFromApi = async ({ page }) => {
+export const dataFromApi = async ( page ) => {
   let response;
   await axios.get(`${baseURL}movie/popular${apiKey}${language}&page=${page}`)
+    .then( data => response = data)
+    .catch((error) => {
+      console.error(error.message)
+    })
+  const data = response.data;
+  return data;
+};
+export const getSearchMovies = async (page, query) => {
+  let response;
+  await axios.get(`${baseURL}search/movie${apiKey}${language}&query=${query}&page=${page}`)
     .then( data => response = data)
     .catch((error) => {
       console.error(error.message)

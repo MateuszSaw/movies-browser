@@ -7,6 +7,7 @@ const moviesSlice = createSlice({
     isError: false,
     genres: [],
   },
+
   reducers: {
     fetchMovies: (state) => {
       state.loading = true;
@@ -45,16 +46,5 @@ export const selectLoadingStatus = (state) => selectMoviesState(state).loading;
 export const selectErrorStatus = (state) => selectMoviesState(state).isError;
 
 export const selectGenres = (state) => selectMoviesState(state).genres;
-
-
-export const selectMoviesByQuery = (state, query) =>{
-  const movies = selectMoviesList(state);
-
-  if(!query || query.trim() === "") {
-    return movies;
-  }
-
-  return movies.filter(({ title }) => title.toUpperCase().includes(query.trim().toUpperCase()));
-};
 
 export default moviesSlice.reducer;
