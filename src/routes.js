@@ -1,2 +1,2 @@
-export const toMoviesPage = () => "/moviesPage";
+export const toMoviesPage = () => "/movies";
 export const toMovieDetails = ({ id } = { id: ":id" }) => `/movieDetails/${id}`;
