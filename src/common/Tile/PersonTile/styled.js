@@ -5,16 +5,14 @@ export const Wrapper = styled.div`
   box-shadow: 0px 4px 12px rgba(186, 199, 213, 0.5);
   padding: 16px;
   display: grid;
-  grid-gap: 8px;
   text-align: center;
 
   @media(max-width:${({theme})=> theme.breakpoints.mobile}px){
     padding: 8px;
   }
-
 `;
 export const Image = styled.img`
-  width: 177px;
+  width: 222px;
   object-position: center center;
   object-fit: cover;
   background-color: ${({ theme }) => theme.colors.silver};
@@ -26,6 +24,7 @@ export const Image = styled.img`
 `;
 
 export const Name = styled.span`
+  padding-top: 16px;
   font-size: 22px;
   font-weight: 500;
   margin: 0;

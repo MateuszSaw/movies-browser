@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Button } from '../../../common/Button';
 import Container from '../../../common/Container';
 import { Error } from '../../../common/Error';
-import List from '../../../common/List';
+import { TileList } from '../../../common/List';
 import { Loading } from '../../../common/Loding';
 import Section from '../../../common/Section';
 import Tile from '../../../common/Tile';
@@ -47,7 +47,7 @@ function MovieDetails () {
           <Loading /> :
           error ?
             <Error /> :
-            details.length !==0  &&
+            details.length === undefined && details.length !==0  &&
             <>
               <Tile
                 metaDataOnMobile
@@ -65,7 +65,7 @@ function MovieDetails () {
               />
                 {cast.length &&
                   <Section title="Cast">
-                    <List persons>
+                    <TileList persons>
                       {cast.slice(0, personsCounter).map(person =>
                         <PersonTile
                           key={person.id + person.character}
@@ -74,7 +74,7 @@ function MovieDetails () {
                           poster={person.profile_path}
                         />
                       )}
-                    </List>
+                    </TileList>
                     {cast.length > personsListLimit &&
                       <Button
                         onClick={() => setPersonsCounter(cast.length > personsCounter ? cast.length : personsListLimit)}
@@ -86,7 +86,7 @@ function MovieDetails () {
                 }
                 {crew.length &&
                   <Section title="Crew">
-                    <List persons>
+                    <TileList persons>
                       {crew.slice(0, personsCounter).map(person =>
                         <PersonTile
                           key={person.id + person.job}
@@ -95,7 +95,7 @@ function MovieDetails () {
                           poster={person.profile_path}
                         />
                       )}
-                    </List>
+                    </TileList>
                     {crew.length > personsListLimit &&
                       <Button
                         onClick={() => setPersonsCounter(crew.length > personsCounter ? crew.length : personsListLimit)}

@@ -1,30 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, resetState, selectErrorStatus, selectLoadingStatus, selectMoviesList, selectTotalPages } from "../moviesSlice";
+import { fetchMovies, selectErrorStatus, selectLoadingStatus, selectMoviesList, selectTotalPages } from "../moviesSlice";
 import { Loading } from "../../../common/Loding";
 import { Error } from "../../../common/Error";
 import { NoResultPage } from "../../../common/NoResultPage";
 import Container from "../../../common/Container";
 import Tile from "../../../common/Tile";
-import List from "../../../common/List";
+import {TileList} from "../../../common/List";
 import { Header } from "../../../common/Header";
 import searchQueryParamName from "../../../searchQueryParamName";
 import { Pagination } from "../../../common/Pagination";
 import { useQueryParameter } from "../../../queryParameters";
 
-function MoviesPage () {
+function MoviesPage() {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoadingStatus);
   const error = useSelector(selectErrorStatus);
   const query = useQueryParameter(searchQueryParamName);
   const moviesList = useSelector(selectMoviesList)
   const totalPages = useSelector(selectTotalPages);
-  const page = useQueryParameter("page");
+  const page = useQueryParameter('page');
 
   useEffect(() => {
-    dispatch(fetchMovies({ page: page || 1, query }));
-    return (() => dispatch(resetState()));
-  }, [dispatch, page, query]);
+    dispatch(fetchMovies({ page: page || 1 }));
+  }, [dispatch, page]);
 
   return (
     <Container>
@@ -36,7 +35,7 @@ function MoviesPage () {
             <NoResultPage query={query} /> : moviesList.length &&
               <>
                 <Header>{!query ? "Most Popular" : `Search results for "${query}" (${moviesList.length})`}</Header>
-                <List>
+                <TileList>
                   {moviesList.map(movie =>
                       <Tile
                         movies
@@ -50,12 +49,12 @@ function MoviesPage () {
                         genresId={movie.genre_ids}
                       />
                   )}
-                </List>
+                </TileList>
                 <Pagination totalPages={totalPages}/>
               </>
       }
     </Container>
   );
-}
+};
 
 export default MoviesPage;
