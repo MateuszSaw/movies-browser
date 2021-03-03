@@ -22,8 +22,8 @@ function MoviesPage() {
   const page = useQueryParameter('page');
 
   useEffect(() => {
-    dispatch(fetchMovies({ page: page || 1 }));
-  }, [dispatch, page]);
+    dispatch(fetchMovies({ page: page || 1, query }));
+  }, [dispatch, page, query]);
 
   return (
     <Container>
