@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  fetchMovies, selectErrorStatus, selectLoadingStatus, selectMoviesByQuery, selectMoviesList, selectTotalPages,
+  fetchMovies, selectErrorStatus, selectLoadingStatus, selectMoviesList, selectTotalPages,
 } from '../moviesSlice';
 import { Loading } from '../../../common/Loding';
 import { Error } from '../../../common/Error';
 import Container from '../../../common/Container';
 import Tile from '../../../common/Tile';
-import List from '../../../common/List';
+import { TileList } from '../../../common/List';
 import { Header } from '../../../common/Header';
 import { Pagination } from '../../../common/Pagination';
 import { useQueryParameter } from '../../../queryParameters';
@@ -34,7 +34,7 @@ function MoviesPage() {
         && (
         <>
           <Header>Most Popular</Header>
-          <List>
+          <TileList>
             {moviesList.map((movie) => (
               <Tile
                 movies
@@ -48,7 +48,7 @@ function MoviesPage() {
                 genresId={movie.genre_ids}
               />
             ))}
-          </List>
+          </TileList>
         </>
         )}
       <Pagination actualPage={page} totalPages={totalPages} />

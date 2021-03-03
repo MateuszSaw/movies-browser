@@ -3,10 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Container from '../../../common/Container';
 import { Error } from '../../../common/Error';
 import { Header } from '../../../common/Header';
-import List from '../../../common/List';
+import { TileList } from '../../../common/List';
 import { Loading } from '../../../common/Loding';
 import { Pagination } from '../../../common/Pagination';
-import Tile from '../../../common/Tile';
 import PersonTile from '../../../common/Tile/PersonTile';
 import { useQueryParameter } from '../../../queryParameters';
 import { fetchPersons, selectErrorStatus, selectLoadingStatus, selectPersonsList, selectTotalPages } from '../personsSlice';
@@ -34,7 +33,7 @@ function PersonsPage() {
         && (
         <>
           <Header>Popular people</Header>
-          <List persons>
+          <TileList persons>
             {personsList.map((person) => (
               <PersonTile
                 key={person.id + person.character}
@@ -43,7 +42,7 @@ function PersonsPage() {
                 poster={person.profile_path}
               />
             ))}
-          </List>
+          </TileList>
         </>
         )}
       <Pagination actualPage={page} totalPages={totalPages} />

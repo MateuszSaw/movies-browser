@@ -1,15 +1,30 @@
-import React from 'react';
-import { Wrapper } from './styled.js'
+import { Link } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
-export const List = ({ movies, persons, children }) => {
-  return (
-    <Wrapper
-      movies={movies}
-      persons={persons}
-    >
-        {children}
-    </Wrapper>
-  );
-};
+export const TileList = styled.div`
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 324px);
+  grid-gap: 24px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
 
-export default List;
+  @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+    grid-template-columns: auto;
+    grid-gap: 16px;
+  }
+
+  ${({persons}) => persons && css`
+    grid-template-columns: repeat(auto-fill, 254px);
+
+    @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
+      grid-template-columns: repeat(auto-fill, 152px);
+    }
+  `};
+`;
+
+export const ListLink = styled(Link)`
+  display: grid;
+  align-items: stretch;
+`;

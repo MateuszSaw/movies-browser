@@ -1,10 +1,11 @@
 import React from 'react';
 import Navigation from './common/Navigation';
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom';
-import { toMovieDetails, toMoviesPage, toPersonsPage} from './routes';
+import { toMovieDetails, toMoviesPage, toPersonDetails, toPersonsPage} from './routes';
 import MoviesPage from './features/movies/MoviesPage';
 import MovieDetails from './features/movies/MovieDetails';
 import PersonsPage from './features/persons/PersonsPage';
+import PersonDetails from './features/persons/PersonDetails';
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
       <Switch>
       <Route path={toMovieDetails()}>
           <MovieDetails />
+        </Route>
+      <Route path={toPersonDetails()}>
+          <personDetails />
         </Route>
         <Route path={toMoviesPage()}>
           <MoviesPage />
