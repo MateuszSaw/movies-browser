@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  fetchMovies, resetState, selectErrorStatus, selectLoadingStatus, selectMoviesByQuery, selectMoviesList, selectTotalPages,
+  fetchMovies, selectErrorStatus, selectLoadingStatus, selectMoviesByQuery, selectMoviesList, selectTotalPages,
 } from '../moviesSlice';
 import { Loading } from '../../../common/Loding';
 import { Error } from '../../../common/Error';
@@ -54,6 +54,6 @@ function MoviesPage() {
       <Pagination actualPage={page} totalPages={totalPages} />
     </Container>
   );
-}
+};
 
 export default MoviesPage;

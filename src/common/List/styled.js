@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
   }
 
   ${({persons}) => persons && css`
-    grid-template-columns: repeat(auto-fill, 208px);
+    grid-template-columns: repeat(auto-fill, 254px);
 
     @media(max-width: ${({ theme }) => theme.breakpoints.mobile}px){
       grid-template-columns: repeat(auto-fill, 152px);
