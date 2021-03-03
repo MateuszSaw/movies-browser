@@ -47,6 +47,7 @@ export const getDetailsFromApi = async (id) => {
     const data = response.data;
     return data;
 };
+
 export const getCrewFromApi = async (id) => {
   let response;
   await axios.get(`${baseURL}movie/${id}/credits${apiKey}${language}`)
