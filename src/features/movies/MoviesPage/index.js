@@ -6,11 +6,12 @@ import { Error } from "../../../common/Error";
 import { NoResultPage } from "../../../common/NoResultPage";
 import Container from "../../../common/Container";
 import Tile from "../../../common/Tile";
-import {TileList} from "../../../common/List";
+import {ListLink, TileList} from "../../../common/List";
 import { Header } from "../../../common/Header";
 import searchQueryParamName from "../../../searchQueryParamName";
 import { Pagination } from "../../../common/Pagination";
 import { useQueryParameter } from "../../../queryParameters";
+import { toMovieDetails } from "../../../routes";
 
 function MoviesPage() {
   const dispatch = useDispatch();
@@ -35,8 +36,12 @@ function MoviesPage() {
             <NoResultPage query={query} /> : moviesList.length &&
               <>
                 <Header>{!query ? "Most Popular" : `Search results for "${query}" (${moviesList.length})`}</Header>
-                <TileList>
+                <TileList movies>
                   {moviesList.map(movie =>
+                    <ListLink
+                      key={movie.id}
+                      to={toMovieDetails(movie)}
+                    >
                       <Tile
                         movies
                         key={movie.id}
@@ -48,7 +53,8 @@ function MoviesPage() {
                         voteAverage={movie.vote_average}
                         genresId={movie.genre_ids}
                       />
-                  )}
+                    </ListLink>
+                )}
                 </TileList>
                 <Pagination totalPages={totalPages}/>
               </>

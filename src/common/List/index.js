@@ -27,4 +27,11 @@ export const TileList = styled.div`
 export const ListLink = styled(Link)`
   display: grid;
   align-items: stretch;
+  text-decoration: none;
+  color: unset;
+  transition: 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
 `;

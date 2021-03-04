@@ -22,7 +22,7 @@ const Tile = ({
   return (
     <Wrapper
       movies={movies}
-      to={toMovieDetails({id})}
+      // to={toMovieDetails({id})}
     >
     <Poster
       movies={movies}
