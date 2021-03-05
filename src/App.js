@@ -16,7 +16,7 @@ function App() {
           <MovieDetails />
         </Route>
       <Route path={toPersonDetails()}>
-          <personDetails />
+          <PersonDetails />
         </Route>
         <Route path={toMoviesPage()}>
           <MoviesPage />

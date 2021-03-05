@@ -8,13 +8,12 @@ const detailsSlice = createSlice({
     isError: false,
     genres: [],
     personDetails: [],
-
   },
   reducers: {
     fetchDetails: (state) => {
       state.loading = true;
     },
-    fetchDetailsSuccess:  (state, { payload: details}) => {
+    fetchDetailsSuccess:  (state, { payload: details }) => {
       state.details = details;
       state.loading = false;
     },

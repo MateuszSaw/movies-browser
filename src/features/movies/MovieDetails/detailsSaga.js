@@ -1,12 +1,12 @@
 import { call, delay, put, takeEvery, } from "redux-saga/effects";
-import { getDetailsFromApi, getGenreFromApi, getCrewFromApi } from "../../dataFromApi";
+import { getMovieDetailsFromApi, getGenreFromApi, getCrewFromApi, getPersonsDetailsFromApi } from "../../dataFromApi";
 import { fetchGenres } from "../moviesSlice";
 import { fetchDetails, fetchDetailsError, fetchDetailsSuccess, fetchPersonDetails } from "./detailsSlice";
 
 function* fetchDetailsListHandler({ payload: id }){
   try{
     yield delay(500);
-    const details = yield call(getDetailsFromApi, id);
+    const details = yield call(getMovieDetailsFromApi, id);
     yield put(fetchDetailsSuccess(details));
   } catch (error){
     yield put(fetchDetailsError());
