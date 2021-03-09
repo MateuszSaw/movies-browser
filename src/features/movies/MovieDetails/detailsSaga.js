@@ -1,5 +1,5 @@
 import { call, delay, put, takeEvery, } from "redux-saga/effects";
-import { getMovieDetailsFromApi, getGenreFromApi, getCrewFromApi, getPersonsDetailsFromApi } from "../../dataFromApi";
+import { getMovieDetailsFromApi, getGenreFromApi, getMovieCreditsFromApi } from "../../dataFromApi";
 import { fetchGenres } from "../moviesSlice";
 import { fetchDetails, fetchDetailsError, fetchDetailsSuccess, fetchPersonDetails } from "./detailsSlice";
 
@@ -22,9 +22,9 @@ function* fetchGenresHandler(){
   }
 };
 
-function* fetchCrewHandler({ payload: id }){
+function* fetchMovieCrewHandler({ payload: id }){
   try{
-    const personDetails = yield call(getCrewFromApi, id);
+    const personDetails = yield call(getMovieCreditsFromApi, id);
     yield put(fetchPersonDetails(personDetails));
   } catch (error){
     yield put(fetchDetailsError());
@@ -34,5 +34,5 @@ function* fetchCrewHandler({ payload: id }){
 export function* detailsSaga(){
  yield takeEvery(fetchDetails.type, fetchDetailsListHandler);
  yield takeEvery(fetchDetails.type, fetchGenresHandler);
- yield takeEvery(fetchDetails.type, fetchCrewHandler);
+ yield takeEvery(fetchDetails.type, fetchMovieCrewHandler);
 }

@@ -6,6 +6,7 @@ const personsDetailsSlice = createSlice({
     personsDetails: '',
     loading: true,
     isError: false,
+    moviesDetails: [],
   },
   reducers: {
     fetchPersonsDetails: (state) => {
@@ -24,6 +25,10 @@ const personsDetailsSlice = createSlice({
       state.isError = false;
       state.personsDetails = [];
     },
+    fetchMoviesDetails: (state, { payload: moviesDetails}) => {
+      state.moviesDetails = moviesDetails;
+      state.loading = false;
+    },
   },
 });
 
@@ -32,11 +37,16 @@ export const {
   fetchPersonsDetailsSuccess,
   fetchPersonsDetailsError,
   resetState,
+  fetchMoviesDetails,
 } = personsDetailsSlice.actions;
 
 export const selectPersonsDetailsState = (state) => state.personsDetails;
 export const selectPersonsDetails = (state) => selectPersonsDetailsState(state).personsDetails;
 export const selectPersonsDetailsLoadingStatus = (state) => selectPersonsDetailsState(state).loading;
 export const selectPersonsDetailsErrorStatus = (state) => selectPersonsDetailsState(state).isError;
+
+export const selectMoviesDetails = (state) => selectPersonsDetailsState(state).moviesDetails;
+export const selectMoviesDetailsCrew = (state) => selectMoviesDetails(state).crew;
+export const selectMoviesDetailsCast = (state) => selectMoviesDetails(state).cast;
 
 export default personsDetailsSlice.reducer

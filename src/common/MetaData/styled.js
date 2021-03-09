@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Content = styled.div``;
 
@@ -10,8 +10,16 @@ export const Wrapper = styled.span`
   padding: 0;
 
   @media(max-width:${({ theme }) => theme.breakpoints.mobile}px){
-    display: none;
-  }
+      display: none;
+    };
+
+  ${({ displayOnMobile }) => displayOnMobile && css`
+    @media(max-width:${({ theme }) => theme.breakpoints.mobile}px){
+      display: unset;
+      font-size: 12px;
+    };
+  `};
+
 `;
 
 export const Item = styled.span`

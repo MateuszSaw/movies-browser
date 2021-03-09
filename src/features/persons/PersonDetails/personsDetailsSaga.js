@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from "@redux-saga/core/effects";
-import { getPersonsDetailsFromApi } from "../../dataFromApi";
-import { fetchPersonsDetails, fetchPersonsDetailsError, fetchPersonsDetailsSuccess } from "./personsDetailsSlice";
+import { getPersonsCreditsFromApi, getPersonsDetailsFromApi } from "../../dataFromApi";
+import { fetchMoviesDetails, fetchPersonsDetails, fetchPersonsDetailsError, fetchPersonsDetailsSuccess } from "./personsDetailsSlice";
 
 function* fetchPersonsDetailsHandler ({payload: id }){
   try{
@@ -11,6 +11,16 @@ function* fetchPersonsDetailsHandler ({payload: id }){
   };
 };
 
+function* fetchPersonCrewHandler({ payload: id }){
+  try{
+    const moviesDetails = yield call(getPersonsCreditsFromApi, id);
+    yield put(fetchMoviesDetails(moviesDetails));
+  } catch (error){
+    yield put(fetchPersonsDetailsError());
+  }
+};
+
 export function* personsDetailsSaga(){
   yield takeEvery(fetchPersonsDetails.type, fetchPersonsDetailsHandler);
+  yield takeEvery(fetchPersonsDetails.type, fetchPersonCrewHandler);
 };

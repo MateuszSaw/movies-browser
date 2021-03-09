@@ -49,6 +49,7 @@ const Tile = ({
             :
             !movies &&
             <MetaData
+              personDetails={personDetails}
               birthPlace = {birthPlace}
               birthDate = {birthDate}
             />

@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   max-width: 1368px;
   display: block;
   min-height: 544px;
+  margin-top: 56px;
 
   @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
     padding: 16px;

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Content, Wrapper, Item } from './styled'
 
-const MetaData = ({production, releaseDate, birthDate, birthPlace}) => {
+const MetaData = ({production, releaseDate, birthDate, birthPlace, personDetails }) => {
 
   const formatDate = (date) => {
     return new Date(date).toLocaleString(undefined, {
@@ -15,8 +15,8 @@ const MetaData = ({production, releaseDate, birthDate, birthPlace}) => {
     <Content>
       {(production || birthDate) &&
         <>
-          <Wrapper>
-            {production ? "Production:" : "Date of birth:"}
+          <Wrapper displayOnMobile={personDetails}>
+            {production ? "Production:" : personDetails ? "Birth:" : "Date of birth:"}
           </Wrapper>
           <Item>
             {production?.map((country) => country.name).join(", ") || formatDate(birthDate)}
@@ -26,7 +26,7 @@ const MetaData = ({production, releaseDate, birthDate, birthPlace}) => {
       <br />
       {(releaseDate || birthPlace) &&
       <>
-        <Wrapper>
+        <Wrapper displayOnMobile={personDetails}>
           {releaseDate ? "Release date:" : "Place of birth:"}
         </Wrapper>
         <Item>

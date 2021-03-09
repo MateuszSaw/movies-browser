@@ -52,7 +52,6 @@ export const selectDetailsErrorStatus = (state) => selectDetailsState(state).isE
 
 export const selectGenres = (state) => selectDetailsState(state).genres;
 
-export const selectPersonDetailsState = (state) => state.personDetails;
 export const selectPersonDetails = (state) => selectDetailsState(state).personDetails;
 export const selectPersonDetailsCrew = (state) => selectPersonDetails(state).crew;
 export const selectPersonDetailsCast = (state) => selectPersonDetails(state).cast;

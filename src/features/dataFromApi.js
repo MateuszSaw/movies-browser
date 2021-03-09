@@ -68,9 +68,19 @@ export const getPersonsDetailsFromApi = async (id) => {
     return data;
 };
 
-export const getCrewFromApi = async (id) => {
+export const getMovieCreditsFromApi = async (id) => {
   let response;
   await axios.get(`${baseURL}movie/${id}/credits${apiKey}${language}`)
+    .then( data => response = data)
+    .catch((error) => {
+      console.error(error.message)
+    })
+    const data = response.data;
+    return data;
+};
+export const getPersonsCreditsFromApi = async (id) => {
+  let response;
+  await axios.get(`${baseURL}person/${id}/movie_credits${apiKey}${language}`)
     .then( data => response = data)
     .catch((error) => {
       console.error(error.message)
