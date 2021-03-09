@@ -42,13 +42,13 @@ export const Poster = styled.img`
   background-color: ${({ theme }) => theme.colors.silver};
   border-radius: 5px;
   float: left;
-  margin: 0 40px 40px 0;
+  margin-right: 40px;
 
   @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
       width: 114px;
       height: 169px;
       margin-bottom: initial;
-      margin: 0 16px 0 0;
+      margin-right: 16px;
       grid-area: image;
     }
 

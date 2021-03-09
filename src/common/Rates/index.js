@@ -1,9 +1,9 @@
 import React from 'react';
 import { VoteAverage, RatesWrapper, Star, Votes, MaxPoint } from './styled';
 
-const Rates = ({ vote, voteAverage, movies, backdrop }) => {
+const Rates = ({ vote, voteAverage, movies, backdrop, personDetails }) => {
   return(
-    <RatesWrapper movies={movies}>
+    <RatesWrapper movies={movies} disabled={personDetails}>
       {voteAverage ?
       <>
        <Star

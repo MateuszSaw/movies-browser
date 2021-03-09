@@ -4,7 +4,6 @@ import camera from '../images/camera.svg';
 import Tags from '../Tags';
 import Rates from '../Rates';
 import MetaData from '../MetaData';
-import { toMovieDetails } from '../../routes';
 
 const Tile = ({
   title,
@@ -18,11 +17,13 @@ const Tile = ({
   description,
   movies,
   metaDataOnMobile,
-   id }) => {
+  birthPlace,
+  birthDate,
+  personDetails,
+}) => {
   return (
     <Wrapper
       movies={movies}
-      // to={toMovieDetails({id})}
     >
     <Poster
       movies={movies}
@@ -40,10 +41,16 @@ const Tile = ({
                 {subtitle.slice(0,4)}
             </Subtitle>
           }
-          {!movies && production &&
+          {!movies && production ?
             <MetaData
               production = {production}
-              releaseDate={releaseDate}
+              releaseDate = {releaseDate}
+            />
+            :
+            !movies &&
+            <MetaData
+              birthPlace = {birthPlace}
+              birthDate = {birthDate}
             />
           }
 
@@ -52,6 +59,7 @@ const Tile = ({
           }
         </ContentWrapper>
         <Rates
+            personDetails={personDetails}
             movies={movies}
             vote={vote}
             voteAverage={voteAverage}

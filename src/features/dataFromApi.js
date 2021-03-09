@@ -57,9 +57,9 @@ export const getMovieDetailsFromApi = async (id) => {
     const data = response.data;
     return data;
 };
-export const getPersonsDetailsFromApi = async () => {
+export const getPersonsDetailsFromApi = async (id) => {
   let response;
-  await axios.get(`${baseURL}person/976${apiKey}${language}`)
+  await axios.get(`${baseURL}person/${id}${apiKey}${language}`)
     .then( data => response = data)
     .catch((error) => {
       console.error(error.message)

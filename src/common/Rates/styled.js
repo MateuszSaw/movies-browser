@@ -16,6 +16,10 @@ export const RatesWrapper = styled.div`
   ${({ movies }) => movies && css`
     margin-top: 10px;
   `};
+
+  ${({ disabled }) => disabled && css`
+    display: none;
+  `};
 `;
 
 export const Star = styled(StarIcon)`

@@ -34,7 +34,7 @@ function PersonsPage() {
         <>
           <Header>Popular people</Header>
           <TileList persons>
-            {personsList.map((person) => (
+            {personsList.map(person => (
               <ListLink
                 key={person.id}
                 to={toPersonDetails(person)}

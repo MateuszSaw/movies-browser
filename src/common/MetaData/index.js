@@ -1,7 +1,7 @@
 import React from 'react'
 import { Content, Wrapper, Item } from './styled'
 
-const MetaData = ({production, releaseDate}) => {
+const MetaData = ({production, releaseDate, birthDate, birthPlace}) => {
 
   const formatDate = (date) => {
     return new Date(date).toLocaleString(undefined, {
@@ -13,23 +13,28 @@ const MetaData = ({production, releaseDate}) => {
 
   return(
     <Content>
-      {production &&
-        <Wrapper>
-          Production:
-        </Wrapper>
+      {(production || birthDate) &&
+        <>
+          <Wrapper>
+            {production ? "Production:" : "Date of birth:"}
+          </Wrapper>
+          <Item>
+            {production?.map((country) => country.name).join(", ") || formatDate(birthDate)}
+          </Item>
+        </>
       }
-      <Item>
-      {production?.map((country) => country.name).join(", ")}
-      </Item>
       <br />
-      {releaseDate &&
+      {(releaseDate || birthPlace) &&
+      <>
         <Wrapper>
-          Release date:
+          {releaseDate ? "Release date:" : "Place of birth:"}
         </Wrapper>
+        <Item>
+          {birthPlace || formatDate(releaseDate)}
+        </Item>
+      </>
       }
-      <Item>
-        {formatDate(releaseDate)}
-      </Item>
+
     </Content>
   );
 };
