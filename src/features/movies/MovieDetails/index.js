@@ -11,7 +11,7 @@ import Tile from '../../../common/Tile';
 import PersonTile from '../../../common/Tile/PersonTile';
 import { toPersonDetails } from '../../../routes';
 import { Backdrop } from './Backdrop';
-import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus, selectPersonDetailsCast, selectPersonDetailsCrew, selectAreDetailsEmpty } from './detailsSlice';
+import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus, selectMovieCrew, selectMovieCast, fetchMovieCredits } from './detailsSlice';
 
 function MovieDetails () {
   const { id } = useParams();
@@ -19,8 +19,8 @@ function MovieDetails () {
   const loading = useSelector(selectDetailsLoadingStatus);
   const error = useSelector(selectDetailsErrorStatus);
   const details = useSelector(selectDetails);
-  const crew = useSelector(selectPersonDetailsCrew);
-  const cast = useSelector(selectPersonDetailsCast);
+  const crew = useSelector(selectMovieCrew);
+  const cast = useSelector(selectMovieCast);
   const personsListLimit = 12;
   const [personsCounter, setPersonsCounter] = useState(personsListLimit);
 

@@ -4,16 +4,17 @@ const detailsSlice = createSlice({
   name: "details",
   initialState: {
     details: [],
+    movieCredits: [],
     loading: true,
     isError: false,
-    personDetails: [],
   },
   reducers: {
     fetchDetails: (state) => {
       state.loading = true;
     },
-    fetchDetailsSuccess:  (state, { payload: details }) => {
-      state.details = details;
+    fetchDetailsSuccess:  (state, { payload }) => {
+      state.details = payload.details;
+      state.movieCredits = payload.movieCredits;
       state.loading = false;
     },
     fetchDetailsError: (state) => {
@@ -24,12 +25,7 @@ const detailsSlice = createSlice({
       state.loading = true;
       state.isError = false;
       state.details = [];
-      state.personDetails= [];
-      state.genres = [];
-    },
-    fetchPersonDetails: (state, { payload: personDetails}) => {
-      state.personDetails = personDetails;
-      state.loading = false;
+      state.movieCredits= [];
     },
   },
 });
@@ -39,16 +35,15 @@ fetchDetails,
 fetchDetailsSuccess,
 fetchDetailsError,
 resetState,
-fetchPersonDetails,
 } = detailsSlice.actions;
 
 export const selectDetailsState = (state) => state.details;
-export const selectDetails = (state) => selectDetailsState(state).details;
 export const selectDetailsLoadingStatus = (state) => selectDetailsState(state).loading;
 export const selectDetailsErrorStatus = (state) => selectDetailsState(state).isError;
 
-export const selectPersonDetails = (state) => selectDetailsState(state).personDetails;
-export const selectPersonDetailsCrew = (state) => selectPersonDetails(state).crew;
-export const selectPersonDetailsCast = (state) => selectPersonDetails(state).cast;
+export const selectDetails = (state) => selectDetailsState(state).details;
+export const selectMovieCredits = (state) => selectDetailsState(state).movieCredits;
+export const selectMovieCrew = (state) => selectMovieCredits(state).crew;
+export const selectMovieCast = (state) => selectMovieCredits(state).cast;
 
 export default detailsSlice.reducer;
