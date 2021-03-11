@@ -4,13 +4,14 @@ import { useParams } from 'react-router-dom';
 import { Button } from '../../../common/Button';
 import Container from '../../../common/Container';
 import { Error } from '../../../common/Error';
-import { TileList } from '../../../common/List';
+import { ListLink, TileList } from '../../../common/List';
 import { Loading } from '../../../common/Loding';
 import Section from '../../../common/Section';
 import Tile from '../../../common/Tile';
 import PersonTile from '../../../common/Tile/PersonTile';
+import { toPersonDetails } from '../../../routes';
 import { Backdrop } from './Backdrop';
-import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus, selectPersonDetailsCast, selectPersonDetailsCrew } from './detailsSlice';
+import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus, selectPersonDetailsCast, selectPersonDetailsCrew, selectAreDetailsEmpty } from './detailsSlice';
 
 function MovieDetails () {
   const { id } = useParams();
@@ -31,48 +32,50 @@ function MovieDetails () {
   return (
     <>
     {loading ?
-      <Loading /> :
+      <Loading />
+       :
       error ?
-        <Error /> :
-        details  &&
-      <Backdrop
-        backdrop={details.backdrop_path}
-        title={details.title}
-        vote={details.vote_count}
-        voteAverage={details.vote_average}
-      />
-    }
-      <Container>
-        {loading ?
-          <Loading /> :
-          error ?
-            <Error /> :
-            details.length === undefined && details.length !==0  &&
-            <>
-              <Tile
-                metaDataOnMobile
-                key={details.id}
-                id={details.id}
-                title={details.title}
-                poster={details.poster_path}
-                subtitle={details.release_date}
-                vote={details.vote_count}
-                voteAverage={details.vote_average}
-                genresId={details.genres}
-                production={details.production_countries}
-                releaseDate={details.release_date}
-                description={details.overview}
-              />
+        <Error />
+        : details &&
+        <>
+        <Backdrop
+          backdrop={details.backdrop_path}
+          title={details.title}
+          vote={details.vote_count}
+          voteAverage={details.vote_average}
+        />
+        {
+          details &&
+          <Container>
+          <Tile
+            metaDataOnMobile
+            key={details.id}
+            id={details.id}
+            title={details.title}
+            poster={details.poster_path}
+            subtitle={details.release_date}
+            vote={details.vote_count}
+            voteAverage={details.vote_average}
+            genresId={details.genres}
+            production={details.production_countries}
+            releaseDate={details.release_date}
+            description={details.overview}
+          />
                 {cast.length &&
                   <Section title="Cast">
                     <TileList persons>
                       {cast.slice(0, personsCounter).map(person =>
+                      <ListLink
+                        key={person.id}
+                        to={toPersonDetails(person)}
+                      >
                         <PersonTile
                           key={person.id + person.character}
                           name={person.name}
                           role={person.character}
                           poster={person.profile_path}
                         />
+                      </ListLink>
                       )}
                     </TileList>
                     {cast.length > personsListLimit &&
@@ -88,12 +91,17 @@ function MovieDetails () {
                   <Section title="Crew">
                     <TileList persons>
                       {crew.slice(0, personsCounter).map(person =>
+                        <ListLink
+                          key={person.id}
+                          to={toPersonDetails(person)}
+                        >
                         <PersonTile
                           key={person.id + person.job}
                           name={person.name}
                           role={person.job}
                           poster={person.profile_path}
                         />
+                        </ListLink>
                       )}
                     </TileList>
                     {crew.length > personsListLimit &&
@@ -105,10 +113,12 @@ function MovieDetails () {
                     }
                   </Section>
                 }
-            </>
-        }
       </Container>
+        }
+
+      </>
+    }
     </>
   );
-}
+};
 export default MovieDetails;

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMovies, selectErrorStatus, selectLoadingStatus, selectMoviesList, selectTotalPages } from "../moviesSlice";
+import { fetchMovies, resetState, selectErrorStatus, selectLoadingStatus, selectMoviesList, selectTotalPages } from "../moviesSlice";
 import { Loading } from "../../../common/Loding";
 import { Error } from "../../../common/Error";
 import { NoResultPage } from "../../../common/NoResultPage";
@@ -18,12 +18,13 @@ function MoviesPage() {
   const loading = useSelector(selectLoadingStatus);
   const error = useSelector(selectErrorStatus);
   const query = useQueryParameter(searchQueryParamName);
-  const moviesList = useSelector(selectMoviesList)
+  const moviesList = useSelector(selectMoviesList);
   const totalPages = useSelector(selectTotalPages);
   const page = useQueryParameter('page');
 
   useEffect(() => {
     dispatch(fetchMovies({ page: page || 1, query }));
+    return (() => dispatch(resetState()));
   }, [dispatch, page, query]);
 
   return (

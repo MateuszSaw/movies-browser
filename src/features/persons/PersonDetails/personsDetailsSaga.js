@@ -1,9 +1,10 @@
-import { call, put, takeEvery } from "@redux-saga/core/effects";
+import { call, put, takeEvery, delay } from "@redux-saga/core/effects";
 import { getPersonsCreditsFromApi, getPersonsDetailsFromApi } from "../../dataFromApi";
 import { fetchMoviesDetails, fetchPersonsDetails, fetchPersonsDetailsError, fetchPersonsDetailsSuccess } from "./personsDetailsSlice";
 
 function* fetchPersonsDetailsHandler ({payload: id }){
   try{
+    yield delay(100);
     const personsDetails = yield call(getPersonsDetailsFromApi, id);
     yield put(fetchPersonsDetailsSuccess(personsDetails));
   } catch (error){

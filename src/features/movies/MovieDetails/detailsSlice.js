@@ -25,6 +25,8 @@ const detailsSlice = createSlice({
       state.loading = true;
       state.isError = false;
       state.details = [];
+      state.personDetails= [];
+      state.genres = [];
     },
     fetchGenres: (state, { payload: genres}) => {
       state.genres = genres;
