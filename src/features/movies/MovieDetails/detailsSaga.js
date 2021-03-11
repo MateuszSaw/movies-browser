@@ -12,15 +12,6 @@ function* fetchDetailsListHandler({ payload: id }){
   };
 };
 
-function* fetchGenresHandler(){
-  try{
-    const genres = yield call(getGenreFromApi);
-    yield put(fetchGenres(genres));
-  } catch (error){
-    yield put(fetchDetailsError());
-  }
-};
-
 function* fetchMovieCrewHandler({ payload: id }){
   try{
     const personDetails = yield call(getMovieCreditsFromApi, id);
@@ -32,6 +23,5 @@ function* fetchMovieCrewHandler({ payload: id }){
 
 export function* detailsSaga(){
  yield takeLatest(fetchDetails.type, fetchDetailsListHandler);
- yield takeLatest(fetchDetails.type, fetchGenresHandler);
  yield takeLatest(fetchDetails.type, fetchMovieCrewHandler);
 }

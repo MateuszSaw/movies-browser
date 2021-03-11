@@ -60,7 +60,7 @@ function PersonDetails () {
                     subtitle={movie.release_date}
                     vote={movie.vote_count}
                     voteAverage={movie.vote_average}
-                    // genresId={movie.genre_ids}
+                    genresId={movie.genre_ids}
                   />
                   </ListLink>
                 )}
