@@ -48,12 +48,12 @@ function PersonDetails () {
               <TileList>
                 {cast.slice(0, moviesCounter).map(movie =>
                   <ListLink
-                    key={movie.id}
+                    key={movie.id + movie.title}
                     to={toMovieDetails(movie)}
                   >
                   <Tile
                     movies
-                    key={movie.id}
+                    key={movie.id + movie.title}
                     id={movie.id}
                     title={movie.title}
                     poster={movie.poster_path}
@@ -75,36 +75,36 @@ function PersonDetails () {
             </Section>
           }
           {crew.length >0 &&
-                  <Section title={`Crew (${crew.length})`}>
-                    <TileList>
-                      {crew.slice(0, moviesCounter).map(movie =>
-                        <ListLink
-                          key={movie.id}
-                          to={toMovieDetails(movie)}
-                        >
-                        <Tile
-                          movies
-                          key={movie.id}
-                          id={movie.id}
-                          title={movie.title}
-                          poster={movie.poster_path}
-                          subtitle={movie.release_date}
-                          vote={movie.vote_count}
-                          voteAverage={movie.vote_average}
-                          // genresId={movie.genre_ids}
-                        />
-                        </ListLink>
-                      )}
-                    </TileList>
-                    {crew.length > moviesListLimit &&
-                      <Button
-                        onClick={() => setMoviesCounter(crew.length > moviesCounter ? crew.length : moviesListLimit)}
-                      >
-                        {crew.length === moviesCounter ? "Hide" : "Show all"}
-                      </Button>
-                    }
-                  </Section>
-                }
+            <Section title={`Crew (${crew.length})`}>
+              <TileList>
+                {crew.slice(0, moviesCounter).map(movie =>
+                  <ListLink
+                    key={movie.id + movie.title}
+                    to={toMovieDetails(movie)}
+                  >
+                  <Tile
+                    movies
+                    key={movie.id + movie.title}
+                    id={movie.id}
+                    title={movie.title}
+                    poster={movie.poster_path}
+                    subtitle={movie.release_date}
+                    vote={movie.vote_count}
+                    voteAverage={movie.vote_average}
+                    genresId={movie.genre_ids}
+                  />
+                  </ListLink>
+                )}
+              </TileList>
+              {crew.length > moviesListLimit &&
+                <Button
+                  onClick={() => setMoviesCounter(crew.length > moviesCounter ? crew.length : moviesListLimit)}
+                >
+                  {crew.length === moviesCounter ? "Hide" : "Show all"}
+                </Button>
+              }
+            </Section>
+          }
         </>
       }
     </Container>

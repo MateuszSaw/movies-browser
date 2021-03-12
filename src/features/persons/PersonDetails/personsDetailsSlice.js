@@ -3,17 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 const personsDetailsSlice = createSlice({
   name: "personsDetails",
   initialState: {
-    personsDetails: '',
+    personsDetails: [],
+    moviesDetails: [],
     loading: true,
     isError: false,
-    moviesDetails: [],
   },
   reducers: {
     fetchPersonsDetails: (state) => {
       state.loading = true;
     },
-    fetchPersonsDetailsSuccess:  (state, { payload: personsDetails }) => {
-      state.personsDetails = personsDetails;
+    fetchPersonsDetailsSuccess:  (state, { payload }) => {
+      state.personsDetails = payload.personsDetails;
+      state.moviesDetails = payload.moviesDetails;
       state.loading = false;
     },
     fetchPersonsDetailsError: (state) => {
@@ -24,10 +25,7 @@ const personsDetailsSlice = createSlice({
       state.loading = true;
       state.isError = false;
       state.personsDetails = [];
-    },
-    fetchMoviesDetails: (state, { payload: moviesDetails}) => {
-      state.moviesDetails = moviesDetails;
-      state.loading = false;
+      state.moviesDetails = [];
     },
   },
 });
@@ -37,7 +35,6 @@ export const {
   fetchPersonsDetailsSuccess,
   fetchPersonsDetailsError,
   resetState,
-  fetchMoviesDetails,
 } = personsDetailsSlice.actions;
 
 export const selectPersonsDetailsState = (state) => state.personsDetails;

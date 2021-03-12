@@ -19,7 +19,7 @@ const MetaData = ({production, releaseDate, birthDate, birthPlace, personDetails
             {production ? "Production:" : personDetails ? "Birth:" : "Date of birth:"}
           </Wrapper>
           <Item>
-            {production?.map((country) => country.name).join(", ") || formatDate(birthDate)}
+            {production?.map((country) => country.name).join(", ") || (birthDate && formatDate(birthDate))}
           </Item>
         </>
       }
@@ -30,7 +30,7 @@ const MetaData = ({production, releaseDate, birthDate, birthPlace, personDetails
           {releaseDate ? "Release date:" : "Place of birth:"}
         </Wrapper>
         <Item>
-          {birthPlace || formatDate(releaseDate)}
+          {birthPlace || (releaseDate && formatDate(releaseDate))}
         </Item>
       </>
       }

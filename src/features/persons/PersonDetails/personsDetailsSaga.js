@@ -1,27 +1,17 @@
-import { call, put, takeEvery, delay } from "@redux-saga/core/effects";
+import { call, put, takeLatest } from "@redux-saga/core/effects";
 import { getPersonsCreditsFromApi, getPersonsDetailsFromApi } from "../../dataFromApi";
-import { fetchMoviesDetails, fetchPersonsDetails, fetchPersonsDetailsError, fetchPersonsDetailsSuccess } from "./personsDetailsSlice";
+import { fetchPersonsDetails, fetchPersonsDetailsError, fetchPersonsDetailsSuccess } from "./personsDetailsSlice";
 
-function* fetchPersonsDetailsHandler ({payload: id }){
+function* fetchPersonsDetailsHandler ({ payload }){
   try{
-    yield delay(100);
-    const personsDetails = yield call(getPersonsDetailsFromApi, id);
-    yield put(fetchPersonsDetailsSuccess(personsDetails));
+    const personsDetails = yield call(getPersonsDetailsFromApi, payload);
+    const moviesDetails = yield call(getPersonsCreditsFromApi, payload);
+    yield put(fetchPersonsDetailsSuccess({personsDetails, moviesDetails }));
   } catch (error){
     yield put(fetchPersonsDetailsError());
   };
 };
 
-function* fetchPersonCrewHandler({ payload: id }){
-  try{
-    const moviesDetails = yield call(getPersonsCreditsFromApi, id);
-    yield put(fetchMoviesDetails(moviesDetails));
-  } catch (error){
-    yield put(fetchPersonsDetailsError());
-  }
-};
-
 export function* personsDetailsSaga(){
-  yield takeEvery(fetchPersonsDetails.type, fetchPersonsDetailsHandler);
-  yield takeEvery(fetchPersonsDetails.type, fetchPersonCrewHandler);
+  yield takeLatest(fetchPersonsDetails.type, fetchPersonsDetailsHandler);
 };

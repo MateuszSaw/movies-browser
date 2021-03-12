@@ -40,12 +40,12 @@ function MoviesPage() {
                 <TileList movies>
                   {moviesList.map(movie =>
                     <ListLink
-                      key={movie.id}
+                      key={movie.id + movie.title}
                       to={toMovieDetails(movie)}
                     >
                       <Tile
                         movies
-                        key={movie.id}
+                        key={movie.id + movie.title}
                         id={movie.id}
                         title={movie.title}
                         poster={movie.poster_path}

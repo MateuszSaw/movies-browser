@@ -49,7 +49,7 @@ function MovieDetails () {
           <Container>
           <Tile
             metaDataOnMobile
-            key={details.id}
+            key={details.id + details.character}
             id={details.id}
             title={details.title}
             poster={details.poster_path}
@@ -66,7 +66,7 @@ function MovieDetails () {
                     <TileList persons>
                       {cast.slice(0, personsCounter).map(person =>
                       <ListLink
-                        key={person.id}
+                        key={person.id + person.character}
                         to={toPersonDetails(person)}
                       >
                         <PersonTile
@@ -92,7 +92,7 @@ function MovieDetails () {
                     <TileList persons>
                       {crew.slice(0, personsCounter).map(person =>
                         <ListLink
-                          key={person.id}
+                          key={person.id + person.job}
                           to={toPersonDetails(person)}
                         >
                         <PersonTile
