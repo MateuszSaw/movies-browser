@@ -1,12 +1,15 @@
 import React from 'react';
+import { useLocation } from 'react-router';
 import { useQueryParameter, useReplaceQueryParameter } from '../../../queryParameters';
-import searchQueryParamName from '../../../searchQueryParamName';
+import { toMoviesPage } from '../../../routes';
+import { search as searchQueryParamName } from '../../../searchQueryParamName';
 import search from '../../images/search.svg'
 import { Input, InputWrapper, SearchImage } from './styled';
 
 export const Search = () => {
   const query = useQueryParameter(searchQueryParamName);
   const replaceQueryParameter = useReplaceQueryParameter();
+  const location = useLocation();
 
   const onInputChange = ({ target }) => {
     replaceQueryParameter({
@@ -19,7 +22,7 @@ export const Search = () => {
     <InputWrapper>
       <SearchImage src={search} alt=''/>
       <Input
-        placeholder= "Search for movies ..."
+        placeholder= {`Search for ${location.pathname.startsWith(toMoviesPage()) ? "movies" : "people"} ...`}
         value = {query || ""}
         onChange={onInputChange}
       />

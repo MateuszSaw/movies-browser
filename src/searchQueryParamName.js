@@ -1,1 +1,2 @@
-export default "search";
+// export default "search";
+export const search = "search";

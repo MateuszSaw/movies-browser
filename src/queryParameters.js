@@ -1,4 +1,5 @@
 import { useLocation, useHistory } from "react-router-dom";
+import { toMoviesPage, toPersonsPage } from "./routes";
 
 export const useQueryParameter = key => {
   const location = useLocation();
@@ -19,7 +20,10 @@ export const useReplaceQueryParameter = () => {
       searchParams.set(key, value);
     }
     const newSearch = searchParams.toString();
-    history.push(`${location.pathname}?${newSearch}`);
+    history.push({
+      pathname: location.pathname.startsWith(toMoviesPage()) ? toMoviesPage() : toPersonsPage(),
+      search: `?${newSearch}`,
+    });
   }
 }
 

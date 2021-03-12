@@ -20,6 +20,7 @@ font-size: 14px;
 color: ${({ theme }) => theme.colors.darkerGrey};
 margin-left: 10px;
 outline: none;
+width: 80%;
 `;
 
 export const SearchImage = styled.img`

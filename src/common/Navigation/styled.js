@@ -41,7 +41,6 @@ export const LogoImage = styled.img`
   }
 `;
 
-
 export const StyledLink = styled(Link)`
   display: flex;
   align-items: center;

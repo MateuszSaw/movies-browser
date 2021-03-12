@@ -44,16 +44,16 @@ function PersonDetails () {
             description={details.biography}
           />
           {cast.length &&
-            <Section title={`Cast (${cast.length})`}>
+            <Section title={`Movies - cast (${cast.length})`}>
               <TileList>
                 {cast.slice(0, moviesCounter).map(movie =>
                   <ListLink
-                    key={movie.id + movie.title}
+                    key={movie.id}
                     to={toMovieDetails(movie)}
                   >
                   <Tile
                     movies
-                    key={movie.id + movie.title}
+                    key={movie.id}
                     id={movie.id}
                     title={movie.title}
                     poster={movie.poster_path}
@@ -75,16 +75,16 @@ function PersonDetails () {
             </Section>
           }
           {crew.length >0 &&
-            <Section title={`Crew (${crew.length})`}>
+            <Section title={`Movies - crew (${crew.length})`}>
               <TileList>
                 {crew.slice(0, moviesCounter).map(movie =>
                   <ListLink
-                    key={movie.id + movie.title}
+                    key={movie.id}
                     to={toMovieDetails(movie)}
                   >
                   <Tile
                     movies
-                    key={movie.id + movie.title}
+                    key={movie.id}
                     id={movie.id}
                     title={movie.title}
                     poster={movie.poster_path}

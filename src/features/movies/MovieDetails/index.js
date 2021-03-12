@@ -11,7 +11,7 @@ import Tile from '../../../common/Tile';
 import PersonTile from '../../../common/Tile/PersonTile';
 import { toPersonDetails } from '../../../routes';
 import { Backdrop } from './Backdrop';
-import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus, selectMovieCrew, selectMovieCast, fetchMovieCredits } from './detailsSlice';
+import { fetchDetails, resetState, selectDetailsErrorStatus, selectDetails, selectDetailsLoadingStatus, selectMovieCrew, selectMovieCast} from './detailsSlice';
 
 function MovieDetails () {
   const { id } = useParams();
@@ -49,7 +49,7 @@ function MovieDetails () {
           <Container>
           <Tile
             metaDataOnMobile
-            key={details.id + details.character}
+            key={details.id}
             id={details.id}
             title={details.title}
             poster={details.poster_path}

@@ -14,9 +14,21 @@ export const getPopularMovies = async ( page ) => {
   const data = response.data;
   return data;
 };
+
 export const getSearchMovies = async (page, query) => {
   let response;
   await axios.get(`${baseURL}search/movie${apiKey}${language}&query=${query}&page=${page}`)
+    .then( data => response = data)
+    .catch((error) => {
+      console.error(error.message)
+    })
+  const data = response.data;
+  return data;
+};
+
+export const getSearchPeople = async (page, query) => {
+  let response;
+  await axios.get(`${baseURL}search/person${apiKey}${language}&query=${query}&page=${page}`)
     .then( data => response = data)
     .catch((error) => {
       console.error(error.message)
@@ -57,6 +69,7 @@ export const getMovieDetailsFromApi = async (id) => {
     const data = response.data;
     return data;
 };
+
 export const getPersonsDetailsFromApi = async (id) => {
   let response;
   await axios.get(`${baseURL}person/${id}${apiKey}${language}`)
@@ -78,6 +91,7 @@ export const getMovieCreditsFromApi = async (id) => {
     const data = response.data;
     return data;
 };
+
 export const getPersonsCreditsFromApi = async (id) => {
   let response;
   await axios.get(`${baseURL}person/${id}/movie_credits${apiKey}${language}`)
@@ -88,4 +102,3 @@ export const getPersonsCreditsFromApi = async (id) => {
     const data = response.data;
     return data;
 };
-

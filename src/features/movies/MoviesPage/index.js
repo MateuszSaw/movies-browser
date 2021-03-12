@@ -8,7 +8,7 @@ import Container from "../../../common/Container";
 import Tile from "../../../common/Tile";
 import {ListLink, TileList} from "../../../common/List";
 import { Header } from "../../../common/Header";
-import searchQueryParamName from "../../../searchQueryParamName";
+import { search as searchQueryParamName } from "../../../searchQueryParamName";
 import { Pagination } from "../../../common/Pagination";
 import { useQueryParameter } from "../../../queryParameters";
 import { toMovieDetails } from "../../../routes";
@@ -40,12 +40,12 @@ function MoviesPage() {
                 <TileList movies>
                   {moviesList.map(movie =>
                     <ListLink
-                      key={movie.id + movie.title}
+                      key={movie.id}
                       to={toMovieDetails(movie)}
                     >
                       <Tile
                         movies
-                        key={movie.id + movie.title}
+                        key={movie.id}
                         id={movie.id}
                         title={movie.title}
                         poster={movie.poster_path}
