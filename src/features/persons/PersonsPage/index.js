@@ -52,9 +52,10 @@ function PersonsPage() {
           </ListLink>
             ))}
           </TileList>
+          <Pagination actualPage={page} totalPages={totalPages} />
         </>
         }
-      <Pagination actualPage={page} totalPages={totalPages} />
+
     </Container>
   );
 };
