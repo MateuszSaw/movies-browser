@@ -24,6 +24,7 @@ const Tile = ({
   return (
     <Wrapper
       movies={movies}
+      personDetails={personDetails}
     >
     <Poster
       movies={movies}

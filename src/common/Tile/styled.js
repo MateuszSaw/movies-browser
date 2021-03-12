@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   max-width: 1368px;
   display: block;
   min-height: 544px;
-  margin-top: 56px;
 
   @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
     padding: 16px;
@@ -30,6 +29,13 @@ export const Wrapper = styled.div`
     @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
       grid-template-columns: auto 1fr;
       grid-gap: unset;
+    }
+  `}
+  ${({ personDetails }) => personDetails && css`
+      margin-top: 56px;
+
+    @media(max-width: ${({ theme })=> theme.breakpoints.mobile}px){
+      margin-top: 23px;
     }
   `}
 `;
