@@ -37,7 +37,7 @@ export const getSearchPeople = async (page, query) => {
   return data;
 };
 
-export const getPopularPeople = async ({ page }) => {
+export const getPopularPeople = async ( page ) => {
   let response;
   await axios.get(`${baseURL}person/popular${apiKey}${language}&page=${page}`)
     .then( data => response = data)

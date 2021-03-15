@@ -6,7 +6,7 @@ import styled from "styled-components";
   margin-bottom: 100px;
 
   @media(max-width: ${({ theme }) => theme.breakpoints.desktop}px){
-    margin: 0 16px;
+    margin: 16px;
   }
 `;
 

@@ -11,7 +11,7 @@ import PersonTile from '../../../common/Tile/PersonTile';
 import { useQueryParameter } from '../../../queryParameters';
 import { toPersonDetails } from '../../../routes';
 import { search as searchQueryParamName } from '../../../searchQueryParamName';
-import { fetchPersons, selectErrorStatus, selectLoadingStatus, selectPersonsList, selectTotalPages } from '../personsSlice';
+import { fetchPersons, resetState, selectErrorStatus, selectLoadingStatus, selectPersonsList, selectTotalPages } from '../personsSlice';
 
 function PersonsPage() {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ function PersonsPage() {
 
   useEffect(() => {
     dispatch(fetchPersons({ page: page || 1, query }));
+    return (() => dispatch(resetState()));
   }, [dispatch, page, query]);
 
   return (

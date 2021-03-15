@@ -157,6 +157,5 @@ export const Description = styled.p`
     margin: 16px 0 0 0 ;
     font-size: 14px;
     grid-area: description;
-
   }
 `;
