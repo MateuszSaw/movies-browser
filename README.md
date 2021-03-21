@@ -17,6 +17,33 @@ Movie Browser- a site where you can browse and search for movies. View movie det
 - JSX
 - create-react-app
 
+### How to use
+
+Browse the list of movies
+
+![](readme/explore-movies-list.gif)
+
+Browse the list of person
+
+![](readme/explore-person-list.gif)
+
+View movie details
+
+![](readme/show-movie-details.gif)
+
+View person details
+
+![](readme/show-person-details.gif)
+
+Search for a movie
+
+![](readme/search-movies.gif)
+
+Search for a person
+
+![](readme/search-person.gif)
+
+
 
 ### Author
 Mateusz Sawicki future Frontend Programmer from Gdańsk.
