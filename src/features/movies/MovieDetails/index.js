@@ -21,7 +21,7 @@ function MovieDetails () {
   const details = useSelector(selectDetails);
   const crew = useSelector(selectMovieCrew);
   const cast = useSelector(selectMovieCast);
-  const personsListLimit = 12;
+  const personsListLimit = 10;
   const [personsCounter, setPersonsCounter] = useState(personsListLimit);
 
   useEffect(() => {
